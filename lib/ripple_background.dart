@@ -2,7 +2,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class RippleBackground extends StatefulWidget {
-  const RippleBackground({super.key});
+  const RippleBackground({required this.rippleColor, super.key});
+
+  final Color rippleColor;
 
   @override
   RippleBackgroundState createState() => RippleBackgroundState();
@@ -28,14 +30,9 @@ class RippleBackgroundState extends State<RippleBackground> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white, // FIXME from theme file
-      body: Center(
-        child: CustomPaint(
-          size: const Size(double.infinity, double.infinity),
-          painter: _RipplePainter(animation: _controller),
-        ),
-      ),
+    return CustomPaint(
+      size: const Size(double.infinity, double.infinity),
+      painter: _RipplePainter(animation: _controller, rippleColor: widget.rippleColor),
     );
   }
 }
@@ -43,15 +40,17 @@ class RippleBackgroundState extends State<RippleBackground> with SingleTickerPro
 class _RipplePainter extends CustomPainter {
   final Animation<double> animation;
 
-  _RipplePainter({required this.animation})
+  _RipplePainter({required this.animation, required this.rippleColor})
       : _path = Path(),
         super(repaint: animation);
+
   final Path _path;
+  final Color rippleColor;
 
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = Colors.blue.withOpacity(0.5) // TODO pass via parameter
+      ..color = rippleColor // TODO pass via parameter
       ..strokeWidth = 4.0
       ..style = PaintingStyle.fill;
 
