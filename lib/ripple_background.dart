@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 
 class RippleBackground extends StatefulWidget {
@@ -17,7 +16,7 @@ class RippleBackgroundState extends State<RippleBackground> with SingleTickerPro
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 300),
       vsync: this,
     )..forward();
   }
@@ -32,7 +31,13 @@ class RippleBackgroundState extends State<RippleBackground> with SingleTickerPro
   Widget build(BuildContext context) {
     return CustomPaint(
       size: const Size(double.infinity, double.infinity),
-      painter: _RipplePainter(animation: _controller, rippleColor: widget.rippleColor),
+      painter: _RipplePainter(
+        animation: CurvedAnimation(
+          parent: _controller,
+          curve: Curves.easeOut,
+        ),
+        rippleColor: widget.rippleColor,
+      ),
     );
   }
 }
@@ -50,17 +55,26 @@ class _RipplePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = rippleColor // TODO pass via parameter
+      ..color = rippleColor
       ..strokeWidth = 4.0
       ..style = PaintingStyle.fill;
 
-    var radius = max(size.width, size.height) / 2;
-    var center = Offset(size.width / 2, size.height / 2); // TODO pass via parameter
+    var centralPoint = Offset(size.width / 2, size.height / 2); // TODO pass via parameter
+    var radiusOfCircumscribedCircle =
+        centralPoint.distance; // todo for passed parameter, the furthest vertex has to be taken into account
 
     var value = animation.value;
     if (value >= 0.0 && value <= 1.0) {
-      var path = _path..addOval(Rect.fromCircle(center: center, radius: radius * value));
-      canvas.drawPath(path, paint);
+      canvas.drawPath(
+        _path
+          ..addOval(
+            Rect.fromCircle(
+              center: centralPoint,
+              radius: radiusOfCircumscribedCircle * value,
+            ),
+          ),
+        paint,
+      );
     }
   }
 
