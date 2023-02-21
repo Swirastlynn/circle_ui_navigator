@@ -1,3 +1,4 @@
+import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedCircleNavigator extends StatefulWidget {
@@ -12,14 +13,9 @@ class AnimatedCircleNavigator extends StatefulWidget {
 class _AnimatedCircleNavigatorState extends State<AnimatedCircleNavigator> with TickerProviderStateMixin {
   double scale = 1.0;
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 400), // todo magic number
+    duration: const Duration(milliseconds: animationDuration),
     vsync: this,
   )..forward(from: 0.0);
-  late final Animation<double> _animation = CurvedAnimation(
-    parent: _controller,
-    curve: Curves.fastOutSlowIn,
-  );
-
   @override
   void dispose() {
     _controller.dispose();
@@ -31,7 +27,7 @@ class _AnimatedCircleNavigatorState extends State<AnimatedCircleNavigator> with 
     print("build scale=$scale");
 
     return ScaleTransition(
-      scale: _animation,
+      scale: _controller,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: widget.child,

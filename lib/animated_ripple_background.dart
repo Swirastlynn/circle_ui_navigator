@@ -1,3 +1,4 @@
+import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
@@ -16,7 +17,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 400),// todo magic number
+      duration: const Duration(milliseconds: backgroundAnimationDuration),
       vsync: this,
     )..forward();
   }
@@ -32,7 +33,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
     return CustomPaint(
       size: const Size(double.infinity, double.infinity),
       painter: _RipplePainter(
-        animation: _controller,
+        animation: CurvedAnimation(parent: _controller, curve: Curves.easeOutSine),
         rippleColor: widget.rippleColor,
       ),
     );
