@@ -1,2 +1,2 @@
-const int animationDuration = 600;
-const int backgroundAnimationDuration = 800;
+const int animationDuration = 800;
+const int backgroundAnimationDuration = 300;

@@ -12,10 +12,12 @@ class AnimatedCircleNavigator extends StatefulWidget {
 
 class _AnimatedCircleNavigatorState extends State<AnimatedCircleNavigator> with TickerProviderStateMixin {
   double scale = 1.0;
+
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: animationDuration),
     vsync: this,
   )..forward(from: 0.0);
+
   @override
   void dispose() {
     _controller.dispose();
@@ -24,13 +26,22 @@ class _AnimatedCircleNavigatorState extends State<AnimatedCircleNavigator> with 
 
   @override
   Widget build(BuildContext context) {
-    print("build scale=$scale");
-
-    return ScaleTransition(
-      scale: _controller,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: widget.child,
+    var curvedAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOutCirc,
+    );
+    var reverseTween = Tween<double>(
+      begin: 1,
+      end: 0,
+    );
+    return RotationTransition(
+      turns: reverseTween.animate(curvedAnimation),
+      child: ScaleTransition(
+        scale: curvedAnimation,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: widget.child,
+        ),
       ),
     );
   }
