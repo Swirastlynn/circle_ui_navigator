@@ -1,5 +1,5 @@
+import 'package:circle_ui_navigator/animated_ripple_background.dart';
 import 'package:circle_ui_navigator/circle_navigator.dart';
-import 'package:circle_ui_navigator/ripple_background.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         body: Stack(
           children: [
             CircleNavigator(icons: icons),
-            RippleBackground(rippleColor: Colors.blue.withOpacity(0.5)),
+            AnimatedRippleBackground(rippleColor: Colors.blue.withOpacity(0.5)),
           ],
         ),
       ),

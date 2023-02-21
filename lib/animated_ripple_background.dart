@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class RippleBackground extends StatefulWidget {
-  const RippleBackground({required this.rippleColor, super.key});
+class AnimatedRippleBackground extends StatefulWidget {
+  const AnimatedRippleBackground({required this.rippleColor, super.key});
 
   final Color rippleColor;
 
   @override
-  RippleBackgroundState createState() => RippleBackgroundState();
+  AnimatedRippleBackgroundState createState() => AnimatedRippleBackgroundState();
 }
 
-class RippleBackgroundState extends State<RippleBackground> with SingleTickerProviderStateMixin {
+class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -59,7 +59,7 @@ class _RipplePainter extends CustomPainter {
 
     var centralPoint = Offset(size.width / 2, size.height / 2); // TODO pass via parameter
     var radiusOfCircumscribedCircle = centralPoint
-        .distance; // TODO for any place on the screen as center, the furthest vertex has to be taken into account
+        .distance; // TODO for any place on the screen as the center of the ripple, the furthest vertex has to be taken into account
 
     var value = animation.value;
     if (value >= 0.0 && value <= 1.0) {
