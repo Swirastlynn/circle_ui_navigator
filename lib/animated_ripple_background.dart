@@ -16,7 +16,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 400),// todo magic number
       vsync: this,
     )..forward();
   }

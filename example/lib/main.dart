@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            CircleNavigator(icons: icons),
             AnimatedRippleBackground(rippleColor: Colors.blue.withOpacity(0.5)),
+            CircleNavigator(icons: icons, closeIcon: Icons.close),
           ],
         ),
       ),

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class CircleNavigatorAnimations extends StatefulWidget {
-  const CircleNavigatorAnimations({required this.child, super.key});
+class AnimatedCircleNavigator extends StatefulWidget {
+  const AnimatedCircleNavigator({required this.child, super.key});
 
   final Widget child;
 
   @override
-  State<CircleNavigatorAnimations> createState() => _CircleNavigatorAnimationsState();
+  State<AnimatedCircleNavigator> createState() => _AnimatedCircleNavigatorState();
 }
 
-class _CircleNavigatorAnimationsState extends State<CircleNavigatorAnimations> with TickerProviderStateMixin {
+class _AnimatedCircleNavigatorState extends State<AnimatedCircleNavigator> with TickerProviderStateMixin {
   double scale = 1.0;
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 2),
+    duration: const Duration(milliseconds: 400), // todo magic number
     vsync: this,
   )..forward(from: 0.0);
   late final Animation<double> _animation = CurvedAnimation(
