@@ -56,7 +56,6 @@ class IconsPositionedOnCircle extends StatelessWidget {
               final double angle = 2 * pi * index / icons.length;
               final double x = radius + radius * cos(angle) - iconSize / 2 + iconRadius;
               final double y = radius + radius * sin(angle) - iconSize / 2 + iconRadius;
-
               return Positioned(
                 left: x,
                 top: y,
@@ -73,28 +72,10 @@ class IconsPositionedOnCircle extends StatelessWidget {
             child: Positioned(
               width: iconSize,
               height: iconSize,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.blue, // todo param
-                    width: 12,
-                  ),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white, // todo param
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Colors.blueGrey, // todo param
-                      width: 12,
-                    ),
-                  ),
-                  child: TappableIcon(
-                    iconData: closeIcon,
-                    iconColor: Colors.black, // todo different colors possibility
-                  ),
-                ),
+              child: TappableIcon(
+                iconData: closeIcon,
+                iconColor: Colors.black, // todo different colors possibility
+                outerBorderColor: Colors.lightBlue.withOpacity(0.5),
               ),
             ),
           ),
