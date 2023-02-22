@@ -41,13 +41,12 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
 }
 
 class _RipplePainter extends CustomPainter {
-  final Animation<double> animation;
-
   _RipplePainter({required this.animation, required this.rippleColor})
       : _path = Path(),
         _paint = Paint(),
         super(repaint: animation);
 
+  final Animation<double> animation;
   final Color rippleColor;
   final Path _path;
   final Paint _paint;

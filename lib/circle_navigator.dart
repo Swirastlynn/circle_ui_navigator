@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:circle_ui_navigator/animated_circle_navigator.dart';
+import 'package:circle_ui_navigator/tappable_icon.dart';
 import 'package:flutter/material.dart';
 
 class CircleNavigator extends StatelessWidget {
@@ -37,7 +38,6 @@ class IconsPositionedOnCircle extends StatelessWidget {
     return SizedBox(
       width: radius * 2 + iconSize,
       height: radius * 2 + iconSize,
-      // padding: EdgeInsets.all(padding),
       child: Stack(
         children: [
           Center(
@@ -45,7 +45,7 @@ class IconsPositionedOnCircle extends StatelessWidget {
               width: radius * 2,
               height: radius * 2,
               decoration: const BoxDecoration(
-                color: Colors.lightGreen, // todo param
+                color: Color.fromARGB(255, 74, 171, 195), // todo param
                 shape: BoxShape.circle,
               ),
             ),
@@ -62,15 +62,9 @@ class IconsPositionedOnCircle extends StatelessWidget {
                 top: y,
                 width: iconSize,
                 height: iconSize,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  padding: const EdgeInsets.all(4.0),
-                  child: Icon(
-                    icons[index],
-                  ),
+                child: TappableIcon(
+                  iconData: icons[index],
+                  iconColor: Colors.red, // todo different colors possibility
                 ),
               );
             },
@@ -96,8 +90,9 @@ class IconsPositionedOnCircle extends StatelessWidget {
                       width: 12,
                     ),
                   ),
-                  child: Icon(
-                    closeIcon,
+                  child: TappableIcon(
+                    iconData: closeIcon,
+                    iconColor: Colors.black, // todo different colors possibility
                   ),
                 ),
               ),
