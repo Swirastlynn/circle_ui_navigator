@@ -8,32 +8,44 @@ class CircleNavigator extends StatelessWidget {
     Key? key,
     required this.icons,
     required this.closeIcon,
+    required this.onClose,
   }) : super(key: key);
 
   final List<IconData> icons;
   final IconData closeIcon;
+  final void Function() onClose;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: AnimatedCircleNavigator(
-        child: IconsPositionedOnCircle(icons: icons, closeIcon: closeIcon),
+        child: IconsPositionedOnCircle(
+          icons: icons,
+          closeIcon: closeIcon,
+          onClose: onClose,
+        ),
       ),
     );
   }
 }
 
 class IconsPositionedOnCircle extends StatelessWidget {
-  const IconsPositionedOnCircle({super.key, required this.icons, required this.closeIcon});
+  const IconsPositionedOnCircle({
+    super.key,
+    required this.icons,
+    required this.closeIcon,
+    required this.onClose,
+  });
 
   final List<IconData> icons;
   final IconData closeIcon;
+  final void Function() onClose;
 
   @override
   Widget build(BuildContext context) {
     const double iconSize = 48.0;
-    final double radius = (icons.length * iconSize * 2) / (2 * pi);
     const double iconRadius = iconSize / 2;
+    final double radius = (icons.length * iconSize * 2) / (2 * pi);
 
     return SizedBox(
       width: radius * 2 + iconSize,
@@ -64,6 +76,9 @@ class IconsPositionedOnCircle extends StatelessWidget {
                 child: TappableIcon(
                   iconData: icons[index],
                   iconColor: Colors.red, // todo different colors possibility
+                  onTap: () {
+                    // todo
+                  },
                 ),
               );
             },
@@ -76,6 +91,10 @@ class IconsPositionedOnCircle extends StatelessWidget {
                 iconData: closeIcon,
                 iconColor: Colors.black, // todo different colors possibility
                 outerBorderColor: Colors.lightBlue.withOpacity(0.5),
+                onTap: () {
+                  // TODO start closing animation, on its onEnd, call [onClose]
+                  onClose();
+                },
               ),
             ),
           ),

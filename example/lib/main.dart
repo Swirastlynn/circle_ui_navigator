@@ -1,6 +1,7 @@
 import 'package:circle_ui_navigator/animated_ripple_background.dart';
 import 'package:circle_ui_navigator/circle_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,19 @@ class MyApp extends StatelessWidget {
         body: Stack(
           children: [
             AnimatedRippleBackground(rippleColor: Colors.blue.withOpacity(0.5)),
-            CircleNavigator(icons: icons, closeIcon: Icons.close),
+            CircleNavigator(
+              icons: icons,
+              closeIcon: Icons.close,
+              onClose: () {
+                // add navigation call based on your navigation setup
+                if (Navigator.canPop(context)) {
+                  // TODO check & fix on iOS
+                  Navigator.pop(context);
+                } else {
+                  SystemNavigator.pop();
+                }
+              },
+            ),
           ],
         ),
       ),

@@ -32,6 +32,8 @@ to `/example` folder.
 const like = 'sample';
 ```
 
+- onCloseButtonTap
+
 ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to

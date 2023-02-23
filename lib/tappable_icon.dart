@@ -4,11 +4,13 @@ class TappableIcon extends StatefulWidget {
   final IconData iconData;
   final Color iconColor;
   final Color? outerBorderColor;
+  final void Function() onTap;
 
   const TappableIcon({
     super.key,
     required this.iconData,
     required this.iconColor,
+    required this.onTap,
     this.outerBorderColor,
   });
 
@@ -23,6 +25,7 @@ class _TappableIconState extends State<TappableIcon> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () => widget.onTap(),
       onTapDown: (_) {
         setState(() {
           _isTapped = true;
