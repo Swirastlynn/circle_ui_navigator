@@ -1,16 +1,15 @@
+import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 
 class TappableIcon extends StatefulWidget {
-  final IconData iconData;
+  final TappableIconData tappableIconData;
   final Color iconColor;
   final Color? outerBorderColor;
-  final void Function() onTap;
 
   const TappableIcon({
     super.key,
-    required this.iconData,
+    required this.tappableIconData,
     required this.iconColor,
-    required this.onTap,
     this.outerBorderColor,
   });
 
@@ -25,7 +24,7 @@ class _TappableIconState extends State<TappableIcon> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.onTap(),
+      onTap: () => widget.tappableIconData.onTap(),
       onTapDown: (_) {
         setState(() {
           _isTapped = true;
@@ -52,7 +51,7 @@ class _TappableIconState extends State<TappableIcon> {
             color: Colors.white,
           ),
           child: Icon(
-            widget.iconData,
+            widget.tappableIconData.data,
             color: _isTapped ? Colors.grey : widget.iconColor,
             size: 28.0,
           ),

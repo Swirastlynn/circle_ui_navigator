@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:circle_ui_navigator/animated_circle_navigator.dart';
 import 'package:circle_ui_navigator/tappable_icon.dart';
+import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 
 class CircleNavigator extends StatelessWidget {
@@ -8,12 +9,10 @@ class CircleNavigator extends StatelessWidget {
     Key? key,
     required this.icons,
     required this.closeIcon,
-    required this.onClose,
   }) : super(key: key);
 
-  final List<IconData> icons;
-  final IconData closeIcon;
-  final void Function() onClose;
+  final List<TappableIconData> icons;
+  final TappableIconData closeIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,6 @@ class CircleNavigator extends StatelessWidget {
         child: IconsPositionedOnCircle(
           icons: icons,
           closeIcon: closeIcon,
-          onClose: onClose,
         ),
       ),
     );
@@ -34,12 +32,10 @@ class IconsPositionedOnCircle extends StatelessWidget {
     super.key,
     required this.icons,
     required this.closeIcon,
-    required this.onClose,
   });
 
-  final List<IconData> icons;
-  final IconData closeIcon;
-  final void Function() onClose;
+  final List<TappableIconData> icons;
+  final TappableIconData closeIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +70,8 @@ class IconsPositionedOnCircle extends StatelessWidget {
                 width: iconSize,
                 height: iconSize,
                 child: TappableIcon(
-                  iconData: icons[index],
+                  tappableIconData: icons[index],
                   iconColor: Colors.red, // todo different colors possibility
-                  onTap: () {
-                    // todo
-                  },
                 ),
               );
             },
@@ -88,13 +81,9 @@ class IconsPositionedOnCircle extends StatelessWidget {
               width: iconSize,
               height: iconSize,
               child: TappableIcon(
-                iconData: closeIcon,
+                tappableIconData: closeIcon,
                 iconColor: Colors.black, // todo different colors possibility
                 outerBorderColor: Colors.lightBlue.withOpacity(0.5),
-                onTap: () {
-                  // TODO start closing animation, on its onEnd, call [onClose]
-                  onClose();
-                },
               ),
             ),
           ),
