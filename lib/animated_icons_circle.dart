@@ -1,16 +1,16 @@
 import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
-class AnimatedCircleNavigator extends StatefulWidget {
-  const AnimatedCircleNavigator({required this.child, super.key});
+class AnimatedIconsCircle extends StatefulWidget {
+  const AnimatedIconsCircle({required this.child, super.key});
 
   final Widget child;
 
   @override
-  State<AnimatedCircleNavigator> createState() => _AnimatedCircleNavigatorState();
+  State<AnimatedIconsCircle> createState() => _AnimatedIconsCircleState();
 }
 
-class _AnimatedCircleNavigatorState extends State<AnimatedCircleNavigator> with TickerProviderStateMixin {
+class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerProviderStateMixin {
   double scale = 1.0;
 
   late final AnimationController _controller = AnimationController(
