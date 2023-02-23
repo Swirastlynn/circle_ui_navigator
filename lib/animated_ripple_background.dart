@@ -2,9 +2,16 @@ import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
-  const AnimatedRippleBackground({required this.rippleColor, super.key});
+  const AnimatedRippleBackground({
+    required this.rippleColor,
+    required this.isClosingAnimation,
+    required this.onCloseAnimationComplete,
+    super.key,
+  });
 
   final Color rippleColor;
+  final bool isClosingAnimation; // FIXME via Provider
+  final void Function() onCloseAnimationComplete; // FIXME via Provider
 
   @override
   AnimatedRippleBackgroundState createState() => AnimatedRippleBackgroundState();
@@ -29,12 +36,22 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   }
 
   @override
+  void didUpdateWidget(covariant AnimatedRippleBackground oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => widget.onCloseAnimationComplete());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: const Size(double.infinity, double.infinity),
-      painter: _RipplePainter(
-        animation: CurvedAnimation(parent: _controller, curve: Curves.easeOutSine),
-        rippleColor: widget.rippleColor,
+    return RepaintBoundary(
+      child: CustomPaint(
+        size: const Size(double.infinity, double.infinity),
+        painter: _RipplePainter(
+          animation: CurvedAnimation(parent: _controller, curve: Curves.easeOutSine),
+          rippleColor: widget.rippleColor,
+        ),
       ),
     );
   }
@@ -42,13 +59,11 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
 
 class _RipplePainter extends CustomPainter {
   _RipplePainter({required this.animation, required this.rippleColor})
-      : _path = Path(),
-        _paint = Paint(),
+      : _paint = Paint(),
         super(repaint: animation);
 
   final Animation<double> animation;
   final Color rippleColor;
-  final Path _path;
   final Paint _paint;
 
   @override
@@ -64,7 +79,7 @@ class _RipplePainter extends CustomPainter {
     var value = animation.value;
     if (value >= 0.0 && value <= 1.0) {
       canvas.drawPath(
-        _path
+        Path()
           ..addOval(
             Rect.fromCircle(
               center: centralPoint,
