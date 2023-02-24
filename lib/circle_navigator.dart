@@ -28,11 +28,11 @@ class _CircleNavigatorState extends State<CircleNavigator> {
           isClosingAnimation: isClosingAnimation,
           onCloseAnimationComplete: () {
             // example works on Android
-            if (Navigator.canPop(context)) {
-              Navigator.pop(context);
-            } else {
-              SystemNavigator.pop();
-            }
+            // if (Navigator.canPop(context)) {
+            //   Navigator.pop(context);
+            // } else {
+            //   SystemNavigator.pop();
+            // }
           },
         ),
         IconsCircle(
@@ -56,6 +56,15 @@ class _CircleNavigatorState extends State<CircleNavigator> {
                  * add navigation call based on your navigation setup
                  */
               }),
+          isClosingAnimation: isClosingAnimation,
+          onCloseAnimationComplete: () {
+            // example works on Android
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            } else {
+              SystemNavigator.pop();
+            }
+          }
         ),
       ],
     );
