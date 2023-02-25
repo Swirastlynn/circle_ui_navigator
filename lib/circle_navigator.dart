@@ -1,5 +1,6 @@
 import 'package:circle_ui_navigator/animated_ripple_background.dart';
 import 'package:circle_ui_navigator/icons_circle.dart';
+import 'package:circle_ui_navigator/closing_animation_inherited_params.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,52 +22,44 @@ class _CircleNavigatorState extends State<CircleNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AnimatedRippleBackground(
-          rippleColor: Colors.blue.withOpacity(0.5),
-          isClosingAnimation: isClosingAnimation,
-          onCloseAnimationComplete: () {
-            // example works on Android
-            // if (Navigator.canPop(context)) {
-            //   Navigator.pop(context);
-            // } else {
-            //   SystemNavigator.pop();
-            // }
-          },
-        ),
-        IconsCircle(
-          icons: List.generate(
-            widget.icons.length,
-            (index) => TappableIconData(
-                data: widget.icons[index],
-                onTap: () {
-                  /**
-                  * add navigation call based on your navigation setup
-                  */
-                }),
+    return ClosingAnimationInheriterdParams(
+      isClosingAnimation: isClosingAnimation,
+      onCloseAnimationComplete: () {
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        } else {
+          SystemNavigator.pop();
+        }
+      },
+      child: Stack(
+        children: [
+          AnimatedRippleBackground(
+            rippleColor: Colors.blue.withOpacity(0.5),
           ),
-          closeIcon: TappableIconData(
-              data: Icons.close,
-              onTap: () {
-                setState(() {
-                  isClosingAnimation = true;
-                });
-                /**
-                 * add navigation call based on your navigation setup
-                 */
-              }),
-          isClosingAnimation: isClosingAnimation,
-          onCloseAnimationComplete: () {
-            // example works on Android
-            if (Navigator.canPop(context)) {
-              Navigator.pop(context);
-            } else {
-              SystemNavigator.pop();
-            }
-          }
-        ),
-      ],
+          IconsCircle(
+              icons: List.generate(
+                widget.icons.length,
+                (index) => TappableIconData(
+                    data: widget.icons[index],
+                    onTap: () {
+                      /**
+                    * add navigation call based on your navigation setup
+                    */
+                    }),
+              ),
+              closeIcon: TappableIconData(
+                  data: Icons.close,
+                  onTap: () {
+                    setState(() {
+                      isClosingAnimation = true;
+                    });
+                    /**
+                   * add navigation call based on your navigation setup
+                   */
+                  }),
+              ),
+        ],
+      ),
     );
   }
 }

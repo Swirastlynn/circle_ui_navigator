@@ -9,21 +9,15 @@ class IconsCircle extends StatelessWidget {
     Key? key,
     required this.icons,
     required this.closeIcon,
-    required this.isClosingAnimation,
-    required this.onCloseAnimationComplete,
   }) : super(key: key);
 
   final List<TappableIconData> icons;
   final TappableIconData closeIcon;
-  final bool isClosingAnimation;
-  final void Function() onCloseAnimationComplete;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: AnimatedIconsCircle(
-        isClosingAnimation: isClosingAnimation,
-        onCloseAnimationComplete: onCloseAnimationComplete,
         child: IconsPositionedOnCircle(
           icons: icons,
           closeIcon: closeIcon,

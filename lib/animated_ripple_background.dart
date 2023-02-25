@@ -1,17 +1,14 @@
+import 'package:circle_ui_navigator/closing_animation_inherited_params.dart';
 import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
   const AnimatedRippleBackground({
     required this.rippleColor,
-    required this.isClosingAnimation,
-    required this.onCloseAnimationComplete,
     super.key,
   });
 
   final Color rippleColor;
-  final bool isClosingAnimation; // FIXME via Provider
-  final void Function() onCloseAnimationComplete; // FIXME via Provider
 
   @override
   AnimatedRippleBackgroundState createState() => AnimatedRippleBackgroundState();
@@ -36,10 +33,11 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   }
 
   @override
-  void didUpdateWidget(covariant AnimatedRippleBackground oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => widget.onCloseAnimationComplete());
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    var inheritedParams = ClosingAnimationInheriterdParams.of(context);
+    if (inheritedParams.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
     }
   }
 

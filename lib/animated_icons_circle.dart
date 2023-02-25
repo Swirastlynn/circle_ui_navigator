@@ -1,17 +1,14 @@
+import 'package:circle_ui_navigator/closing_animation_inherited_params.dart';
 import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedIconsCircle extends StatefulWidget {
   const AnimatedIconsCircle({
     required this.child,
-    required this.isClosingAnimation,
-    required this.onCloseAnimationComplete,
     super.key,
   });
 
   final Widget child;
-  final bool isClosingAnimation;
-  final void Function() onCloseAnimationComplete;
 
   @override
   State<AnimatedIconsCircle> createState() => _AnimatedIconsCircleState();
@@ -38,10 +35,11 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
   }
 
   @override
-  void didUpdateWidget(covariant AnimatedIconsCircle oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => widget.onCloseAnimationComplete());
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    var inheritedParams = ClosingAnimationInheriterdParams.of(context);
+    if (inheritedParams.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
     }
   }
 
