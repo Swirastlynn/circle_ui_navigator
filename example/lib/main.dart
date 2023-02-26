@@ -1,5 +1,6 @@
 import 'package:circle_ui_navigator/circle_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,20 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Circle UI Navigator example'),
         ),
-        body: CircleNavigator(icons: icons),
+        body: CircleNavigator(
+          icons: icons,
+          navigateBack: () {
+            /**
+            * Add navigation call based on your navigation setup.
+            * This one works only on Android.
+            */
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context);
+            } else {
+              SystemNavigator.pop();
+            }
+          },
+        ),
       ),
     );
   }
