@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:circle_ui_navigator/animated_icons_circle.dart';
+import 'package:circle_ui_navigator/circle_navigation_params.dart';
 import 'package:circle_ui_navigator/tappable_icon.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
@@ -41,19 +42,21 @@ class IconsPositionedOnCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     const double iconSize = 48.0;
     const double iconRadius = iconSize / 2;
-    final double radius = (icons.length * iconSize * 2) / (2 * pi);
+    final double circleRadius = (icons.length * iconSize * 2) / (2 * pi);
+    final double circleDiameter = circleRadius * 2;
+    final params = CircleNavigatorParams.of(context);
 
     return SizedBox(
-      width: radius * 2 + iconSize,
-      height: radius * 2 + iconSize,
+      width: circleDiameter + iconSize,
+      height: circleDiameter + iconSize,
       child: Stack(
         children: [
           Center(
             child: Container(
-              width: radius * 2,
-              height: radius * 2,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 74, 171, 195), // todo param
+              width: circleDiameter,
+              height: circleDiameter,
+              decoration: BoxDecoration(
+                color: params.filledCircleColor,
                 shape: BoxShape.circle,
               ),
             ),
@@ -62,8 +65,8 @@ class IconsPositionedOnCircle extends StatelessWidget {
             icons.length,
             (index) {
               final double angle = 2 * pi * index / icons.length;
-              final double x = radius + radius * cos(angle) - iconSize / 2 + iconRadius;
-              final double y = radius + radius * sin(angle) - iconSize / 2 + iconRadius;
+              final double x = circleRadius + circleRadius * cos(angle) - iconSize / 2 + iconRadius;
+              final double y = circleRadius + circleRadius * sin(angle) - iconSize / 2 + iconRadius;
               return Positioned(
                 left: x,
                 top: y,

@@ -1,17 +1,20 @@
 import 'package:circle_ui_navigator/animated_ripple_background.dart';
 import 'package:circle_ui_navigator/icons_circle.dart';
-import 'package:circle_ui_navigator/closing_animation_inherited_params.dart';
+import 'package:circle_ui_navigator/circle_navigation_params.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 
 class CircleNavigator extends StatefulWidget {
-
   const CircleNavigator({
     Key? key,
+    required this.animatedRippleColor,
+    required this.filledCircleColor,
     required this.icons,
     required this.navigateBack,
   }) : super(key: key);
 
+  final Color animatedRippleColor;
+  final Color filledCircleColor;
   final List<IconData> icons;
   final void Function() navigateBack;
 
@@ -24,16 +27,16 @@ class _CircleNavigatorState extends State<CircleNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return ClosingAnimationInheriterdParams(
+    return CircleNavigatorParams(
+      animatedRippleColor: widget.animatedRippleColor,
+      filledCircleColor: widget.filledCircleColor,
       isClosingAnimation: isClosingAnimation,
       onCloseAnimationComplete: () {
         widget.navigateBack();
       },
       child: Stack(
         children: [
-          AnimatedRippleBackground(
-            rippleColor: Colors.blue.withOpacity(0.5),
-          ),
+          const AnimatedRippleBackground(),
           IconsCircle(
             icons: List.generate(
               widget.icons.length,

@@ -1,14 +1,11 @@
-import 'package:circle_ui_navigator/closing_animation_inherited_params.dart';
+import 'package:circle_ui_navigator/circle_navigation_params.dart';
 import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
   const AnimatedRippleBackground({
-    required this.rippleColor,
     super.key,
   });
-
-  final Color rippleColor;
 
   @override
   AnimatedRippleBackgroundState createState() => AnimatedRippleBackgroundState();
@@ -35,7 +32,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var inheritedParams = ClosingAnimationInheriterdParams.of(context);
+    var inheritedParams = CircleNavigatorParams.of(context);
     if (inheritedParams.isClosingAnimation) {
       _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
     }
@@ -48,7 +45,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
         size: const Size(double.infinity, double.infinity),
         painter: _RipplePainter(
           animation: CurvedAnimation(parent: _controller, curve: Curves.easeOutSine),
-          rippleColor: widget.rippleColor,
+          rippleColor: CircleNavigatorParams.of(context).animatedRippleColor,
         ),
       ),
     );

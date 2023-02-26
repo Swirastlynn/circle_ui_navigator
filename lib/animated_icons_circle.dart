@@ -1,4 +1,4 @@
-import 'package:circle_ui_navigator/closing_animation_inherited_params.dart';
+import 'package:circle_ui_navigator/circle_navigation_params.dart';
 import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +37,7 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var inheritedParams = ClosingAnimationInheriterdParams.of(context);
+    var inheritedParams = CircleNavigatorParams.of(context);
     if (inheritedParams.isClosingAnimation) {
       _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
     }

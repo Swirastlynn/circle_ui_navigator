@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
           title: const Text('Circle UI Navigator example'),
         ),
         body: CircleNavigator(
+          animatedRippleColor: Colors.blue.withOpacity(0.5),
+          filledCircleColor: const Color.fromARGB(255, 74, 171, 195),
           icons: icons,
           navigateBack: () {
             /**
