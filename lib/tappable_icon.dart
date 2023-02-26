@@ -1,16 +1,13 @@
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class TappableIcon extends StatefulWidget {
   final TappableIconData tappableIconData;
-  final Color iconColor;
-  final Color? outerBorderColor;
 
   const TappableIcon({
     super.key,
     required this.tappableIconData,
-    required this.iconColor,
-    this.outerBorderColor,
   });
 
   @override
@@ -38,22 +35,26 @@ class _TappableIconState extends State<TappableIcon> {
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: widget.outerBorderColor != null
+          border: widget.tappableIconData.outerBorderColor != null
               ? Border.all(
-                  color: widget.outerBorderColor!,
-                  width: 18,
+                  color: widget.tappableIconData.outerBorderColor!,
+                  width: 16,
                 )
-              : null,
+              : Border.all(
+                  color: Colors.white,
+                  width: 10,
+                ),
         ),
         child: Container(
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
           ),
-          child: Icon(
-            widget.tappableIconData.data,
-            color: _isTapped ? Colors.grey : widget.iconColor,
-            size: 28.0,
+          child: SvgPicture.asset(
+            widget.tappableIconData.assetPath,
+            color: _isTapped ? widget.tappableIconData.tappedColor : widget.tappableIconData.color,
+            width: 32,
+            height: 32,
           ),
         ),
       ),

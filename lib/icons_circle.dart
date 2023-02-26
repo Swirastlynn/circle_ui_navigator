@@ -8,11 +8,11 @@ import 'package:flutter/material.dart';
 class IconsCircle extends StatelessWidget {
   const IconsCircle({
     Key? key,
-    required this.icons,
+    required this.actionIcons,
     required this.closeIcon,
   }) : super(key: key);
 
-  final List<TappableIconData> icons;
+  final List<TappableIconData> actionIcons;
   final TappableIconData closeIcon;
 
   @override
@@ -20,7 +20,7 @@ class IconsCircle extends StatelessWidget {
     return Center(
       child: AnimatedIconsCircle(
         child: IconsPositionedOnCircle(
-          icons: icons,
+          icons: actionIcons,
           closeIcon: closeIcon,
         ),
       ),
@@ -74,7 +74,6 @@ class IconsPositionedOnCircle extends StatelessWidget {
                 height: iconSize,
                 child: TappableIcon(
                   tappableIconData: icons[index],
-                  iconColor: Colors.red, // todo different colors possibility
                 ),
               );
             },
@@ -85,8 +84,6 @@ class IconsPositionedOnCircle extends StatelessWidget {
               height: iconSize,
               child: TappableIcon(
                 tappableIconData: closeIcon,
-                iconColor: Colors.black, // todo different colors possibility
-                outerBorderColor: Colors.lightBlue.withOpacity(0.5),
               ),
             ),
           ),

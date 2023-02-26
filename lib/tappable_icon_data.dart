@@ -3,16 +3,24 @@ import 'package:flutter/material.dart';
 
 class TappableIconData extends Equatable {
   const TappableIconData({
-    required this.data,
+    required this.assetPath,
+    required this.color,
+    required this.tappedColor,
     required this.onTap,
+    this.outerBorderColor,
   });
 
-  final IconData data;
+  final String assetPath;
+  final Color color;
+  final Color tappedColor;
   final void Function() onTap;
+  final Color? outerBorderColor;
 
   @override
-  List<Object> get props => [
-        data, // todo how it behaves for IconData?
-        onTap,
+  List<Object?> get props => [
+        assetPath,
+        color,
+        outerBorderColor,
+        onTap, // todo how it behaves for IconData?
       ];
 }
