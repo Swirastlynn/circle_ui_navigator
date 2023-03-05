@@ -35,21 +35,15 @@ class _TappableIconState extends State<TappableIcon> {
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: widget.tappableIconData.outerBorderColor !=
-                  null // todo this is different information than what I wanted to express actually
-              ? Border.all(
-                  color: widget.tappableIconData.outerBorderColor!, // todo
-                  width: 12, // todo
-                )
-              : Border.all(
-                  color: Colors.white, // todo
-                  width: 10, // todo
-                ),
+          border: Border.all(
+            color: widget.tappableIconData.outerBorderColor,
+            width: widget.tappableIconData.outerBorderSize,
+          ),
         ),
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white, //todo
+            color: widget.tappableIconData.innerBorderColor,
           ),
           child: SvgPicture.asset(
             widget.tappableIconData.assetPath,

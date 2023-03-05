@@ -1,6 +1,5 @@
 import 'package:circle_ui_navigator/animated_ripple_background.dart';
 import 'package:circle_ui_navigator/icons_circle.dart';
-import 'package:circle_ui_navigator/circle_navigation_params.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 

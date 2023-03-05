@@ -43,69 +43,87 @@ class _MyAppState extends State<MyApp> {
               }
             };
           },
+          iconSize: 48.0,
           child: CircleNavigator(
             actionIcons: [
               TappableIconData(
                 assetPath: 'assets/images/local_florist.svg',
                 color: Colors.green,
+                tappedColor: Colors.grey,
                 onTap: () {
                   /**
                   * Add navigation call based on your navigation setup.
                   */
                 },
-                tappedColor: Colors.grey,
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
               ),
               TappableIconData(
                 assetPath: 'assets/images/local_activity.svg',
                 color: Colors.purple,
+                tappedColor: Colors.grey,
                 onTap: () {
                   /**
                   * Add navigation call based on your navigation setup.
                   */
                 },
-                tappedColor: Colors.grey,
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
               ),
               TappableIconData(
                 assetPath: 'assets/images/restaurant.svg',
                 color: Colors.orange.shade700,
+                tappedColor: Colors.grey,
                 onTap: () {
                   /**
                   * Add navigation call based on your navigation setup.
                   */
                 },
-                tappedColor: Colors.grey,
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
               ),
               TappableIconData(
                 assetPath: 'assets/images/baby_changing_station.svg',
                 color: Colors.red.shade700,
+                tappedColor: Colors.grey,
                 onTap: () {
                   /**
                   * Add navigation call based on your navigation setup.
                   */
                 },
-                tappedColor: Colors.grey,
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
               ),
               TappableIconData(
                 assetPath: 'assets/images/construction.svg',
                 color: Colors.yellow.shade800,
+                tappedColor: Colors.grey,
                 onTap: () {
                   /**
                   * Add navigation call based on your navigation setup.
                   */
                 },
-                tappedColor: Colors.grey,
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
               ),
             ],
             closeIcon: TappableIconData(
               color: const Color(0xFF3678D0),
               assetPath: 'assets/images/close.svg',
+              tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
               onTap: () {
                 setState(() {
                   _isClosingAnimation = true;
                 });
               },
-              tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
               outerBorderColor: Colors.white54,
+              outerBorderSize: 12,
+              innerBorderColor: Colors.white,
             ),
           ),
         ),

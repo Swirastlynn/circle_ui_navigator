@@ -40,8 +40,8 @@ class IconsPositionedOnCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double iconSize = 48.0; // todo
-    const double iconRadius = iconSize / 2;
+    double iconSize = CircleNavigatorParams.of(context).iconSize;
+    double iconRadius = iconSize / 2;
     final double circleRadius = (icons.length * iconSize * 2) / (2 * pi);
     final double circleDiameter = circleRadius * 2;
     final params = CircleNavigatorParams.of(context);

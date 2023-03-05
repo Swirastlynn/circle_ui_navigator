@@ -7,14 +7,16 @@ class CircleNavigatorParams extends InheritedWidget {
     required this.filledCircleColor,
     required this.isClosingAnimation,
     required this.onCloseAnimationComplete,
-    super.key,
+    required this.iconSize,
     required super.child,
+    super.key,
   });
 
   final Color animatedRippleColor;
   final Color filledCircleColor;
   final bool isClosingAnimation;
   final void Function() onCloseAnimationComplete;
+  final double iconSize;
 
   static CircleNavigatorParams? maybeOf(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<CircleNavigatorParams>();
