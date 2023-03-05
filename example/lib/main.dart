@@ -27,8 +27,8 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Circle UI Navigator example'),
         ),
         body: CircleNavigatorParams(
-          animatedRippleColor: Colors.blue.withOpacity(0.5),
-          filledCircleColor: const Color.fromARGB(255, 74, 171, 195),
+          animatedRippleColor: const Color.fromRGBO(102, 160, 254, 0.7),
+          filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
           isClosingAnimation: _isClosingAnimation,
           onCloseAnimationComplete: () {
             () {
@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                 tappedColor: Colors.grey,
               ),
               TappableIconData(
-                assetPath: 'assets/images/handyman.svg',
+                assetPath: 'assets/images/construction.svg',
                 color: Colors.yellow.shade800,
                 onTap: () {
                   /**
@@ -97,15 +97,15 @@ class _MyAppState extends State<MyApp> {
               ),
             ],
             closeIcon: TappableIconData(
-              color: Colors.blue,
+              color: const Color(0xFF3678D0),
               assetPath: 'assets/images/close.svg',
               onTap: () {
                 setState(() {
                   _isClosingAnimation = true;
                 });
               },
-              tappedColor: Colors.grey,
-              outerBorderColor: Colors.lightBlue,
+              tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
+              outerBorderColor: Colors.white54,
             ),
           ),
         ),

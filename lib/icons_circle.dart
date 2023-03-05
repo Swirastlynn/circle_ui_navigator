@@ -40,15 +40,16 @@ class IconsPositionedOnCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double iconSize = 48.0;
+    const double iconSize = 48.0; // todo
     const double iconRadius = iconSize / 2;
     final double circleRadius = (icons.length * iconSize * 2) / (2 * pi);
     final double circleDiameter = circleRadius * 2;
     final params = CircleNavigatorParams.of(context);
+    final boxSize = circleDiameter + iconSize;
 
     return SizedBox(
-      width: circleDiameter + iconSize,
-      height: circleDiameter + iconSize,
+      width: boxSize,
+      height: boxSize,
       child: Stack(
         children: [
           Center(
@@ -78,13 +79,13 @@ class IconsPositionedOnCircle extends StatelessWidget {
               );
             },
           ),
-          Center(
-            child: Positioned(
-              width: iconSize,
-              height: iconSize,
-              child: TappableIcon(
-                tappableIconData: closeIcon,
-              ),
+          Positioned(
+            left: circleDiameter / 2,
+            top: circleDiameter / 2,
+            width: iconSize,
+            height: iconSize,
+            child: TappableIcon(
+              tappableIconData: closeIcon,
             ),
           ),
         ],
