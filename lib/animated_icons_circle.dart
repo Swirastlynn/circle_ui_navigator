@@ -1,5 +1,4 @@
 import 'package:circle_ui_navigator/circle_navigation_params.dart';
-import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedIconsCircle extends StatefulWidget {
@@ -17,16 +16,11 @@ class AnimatedIconsCircle extends StatefulWidget {
 class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerProviderStateMixin {
   double scale = 1.0;
 
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: animationDuration),
-      vsync: this,
-    )..forward();
-  }
+  late final _animationDuration = CircleNavigatorParams.of(context).backgroundAnimationDuration;
+  late final _controller = AnimationController(
+    duration: Duration(milliseconds: _animationDuration),
+    vsync: this,
+  );
 
   @override
   void dispose() {
@@ -38,7 +32,9 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
   void didChangeDependencies() {
     super.didChangeDependencies();
     var inheritedParams = CircleNavigatorParams.of(context);
-    if (inheritedParams.isClosingAnimation) {
+    if (inheritedParams.isOpeningAnimation) {
+      _controller.forward().whenComplete(() => inheritedParams.onOpenAnimationComplete());
+    } else if (inheritedParams.isClosingAnimation) {
       _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
     }
   }

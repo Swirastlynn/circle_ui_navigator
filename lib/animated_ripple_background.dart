@@ -1,5 +1,4 @@
 import 'package:circle_ui_navigator/circle_navigation_params.dart';
-import 'package:circle_ui_navigator/constants.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
@@ -12,16 +11,11 @@ class AnimatedRippleBackground extends StatefulWidget {
 }
 
 class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: backgroundAnimationDuration),
-      vsync: this,
-    )..forward();
-  }
+  late final _animationDuration = CircleNavigatorParams.of(context).backgroundAnimationDuration;
+  late final _controller = AnimationController(
+    duration: Duration(milliseconds: _animationDuration),
+    vsync: this,
+  );
 
   @override
   void dispose() {
@@ -33,7 +27,9 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   void didChangeDependencies() {
     super.didChangeDependencies();
     var inheritedParams = CircleNavigatorParams.of(context);
-    if (inheritedParams.isClosingAnimation) {
+    if (inheritedParams.isOpeningAnimation) {
+      _controller.forward().whenComplete(() => inheritedParams.onOpenAnimationComplete());
+    } else if (inheritedParams.isClosingAnimation) {
       _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
     }
   }
@@ -44,7 +40,10 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
       child: CustomPaint(
         size: const Size(double.infinity, double.infinity),
         painter: _RipplePainter(
-          animation: CurvedAnimation(parent: _controller, curve: Curves.easeOutSine),
+          animation: CurvedAnimation(
+            parent: _controller,
+            curve: Curves.easeOutSine,
+          ),
           rippleColor: CircleNavigatorParams.of(context).animatedRippleColor,
         ),
       ),

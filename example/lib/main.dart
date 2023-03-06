@@ -16,6 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool _isOpeningAnimation = true;
   bool _isClosingAnimation = false;
 
   @override
@@ -29,6 +30,10 @@ class _MyAppState extends State<MyApp> {
         body: CircleNavigatorParams(
           animatedRippleColor: const Color.fromRGBO(102, 160, 254, 0.7),
           filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
+          isOpeningAnimation: _isOpeningAnimation,
+          onOpenAnimationComplete: () {
+            _isOpeningAnimation = false;
+          },
           isClosingAnimation: _isClosingAnimation,
           onCloseAnimationComplete: () {
             () {
@@ -41,6 +46,7 @@ class _MyAppState extends State<MyApp> {
               } else {
                 SystemNavigator.pop();
               }
+              _isClosingAnimation = false;
             };
           },
           iconSize: 48.0,

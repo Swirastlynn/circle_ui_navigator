@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CircleNavigatorParams extends InheritedWidget {
-
   const CircleNavigatorParams({
     required this.animatedRippleColor,
     required this.filledCircleColor,
+    required this.isOpeningAnimation,
+    required this.onOpenAnimationComplete,
     required this.isClosingAnimation,
     required this.onCloseAnimationComplete,
+    this.animationDuration = 800,
+    this.backgroundAnimationDuration = 800,
     required this.iconSize,
     required super.child,
     super.key,
@@ -14,8 +17,12 @@ class CircleNavigatorParams extends InheritedWidget {
 
   final Color animatedRippleColor;
   final Color filledCircleColor;
+  final bool isOpeningAnimation;
+  final void Function() onOpenAnimationComplete;
   final bool isClosingAnimation;
   final void Function() onCloseAnimationComplete;
+  final int animationDuration;
+  final int backgroundAnimationDuration;
   final double iconSize;
 
   static CircleNavigatorParams? maybeOf(BuildContext context) {
@@ -30,8 +37,7 @@ class CircleNavigatorParams extends InheritedWidget {
 
   @override
   bool updateShouldNotify(CircleNavigatorParams oldWidget) {
-    return isClosingAnimation != oldWidget.isClosingAnimation ||
-        onCloseAnimationComplete != oldWidget.onCloseAnimationComplete;
+    return isOpeningAnimation != oldWidget.isOpeningAnimation || isClosingAnimation != oldWidget.isClosingAnimation;
     // todo test lambda equality
   }
 }
