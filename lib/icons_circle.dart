@@ -40,11 +40,12 @@ class IconsPositionedOnCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double iconSize = CircleNavigatorParams.of(context).iconSize;
+    final config = CircleNavigatorConfig.of(context);
+    double iconSize = config.iconSize;
     double iconRadius = iconSize / 2;
-    final double circleRadius = (icons.length * iconSize * 2) / (2 * pi);
+    final double circleRadius =
+        ((icons.length <= 3) ? (icons.length * iconSize * 3) : (icons.length * iconSize * 2)) / (2 * pi);
     final double circleDiameter = circleRadius * 2;
-    final params = CircleNavigatorParams.of(context);
     final boxSize = circleDiameter + iconSize;
 
     return SizedBox(
@@ -57,7 +58,7 @@ class IconsPositionedOnCircle extends StatelessWidget {
               width: circleDiameter,
               height: circleDiameter,
               decoration: BoxDecoration(
-                color: params.filledCircleColor,
+                color: config.filledCircleColor,
                 shape: BoxShape.circle,
               ),
             ),

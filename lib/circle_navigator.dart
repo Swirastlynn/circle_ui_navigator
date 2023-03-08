@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class CircleNavigator extends StatelessWidget {
   const CircleNavigator({
     Key? key,
-    required this.actionIcons,
+    required this.actionIcons, // should be between 3 and 10, looks gorgeous for 5, 6 or 7
     required this.closeIcon,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class CircleNavigator extends StatelessWidget {
       children: [
         const AnimatedRippleBackground(),
         IconsCircle(
-          actionIcons: actionIcons, // todo inherinted?
+          actionIcons: actionIcons,
           closeIcon: closeIcon,
         ),
       ],

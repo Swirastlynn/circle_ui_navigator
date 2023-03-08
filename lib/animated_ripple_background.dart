@@ -11,7 +11,7 @@ class AnimatedRippleBackground extends StatefulWidget {
 }
 
 class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with SingleTickerProviderStateMixin {
-  late final _animationDuration = CircleNavigatorParams.of(context).backgroundAnimationDuration;
+  late final _animationDuration = CircleNavigatorConfig.of(context).backgroundAnimationDuration;
   late final _controller = AnimationController(
     duration: Duration(milliseconds: _animationDuration),
     vsync: this,
@@ -26,11 +26,11 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var inheritedParams = CircleNavigatorParams.of(context);
-    if (inheritedParams.isOpeningAnimation) {
-      _controller.forward().whenComplete(() => inheritedParams.onOpenAnimationComplete());
-    } else if (inheritedParams.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
+    var config = CircleNavigatorConfig.of(context);
+    if (config.isOpeningAnimation) {
+      _controller.forward().whenComplete(() => config.onOpenAnimationComplete());
+    } else if (config.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => config.onCloseAnimationComplete());
     }
   }
 
@@ -44,7 +44,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
             parent: _controller,
             curve: Curves.easeOutSine,
           ),
-          rippleColor: CircleNavigatorParams.of(context).animatedRippleColor,
+          rippleColor: CircleNavigatorConfig.of(context).animatedRippleColor,
         ),
       ),
     );

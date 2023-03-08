@@ -16,7 +16,7 @@ class AnimatedIconsCircle extends StatefulWidget {
 class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerProviderStateMixin {
   double scale = 1.0;
 
-  late final _animationDuration = CircleNavigatorParams.of(context).backgroundAnimationDuration;
+  late final _animationDuration = CircleNavigatorConfig.of(context).backgroundAnimationDuration;
   late final _controller = AnimationController(
     duration: Duration(milliseconds: _animationDuration),
     vsync: this,
@@ -31,11 +31,11 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var inheritedParams = CircleNavigatorParams.of(context);
-    if (inheritedParams.isOpeningAnimation) {
-      _controller.forward().whenComplete(() => inheritedParams.onOpenAnimationComplete());
-    } else if (inheritedParams.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => inheritedParams.onCloseAnimationComplete());
+    var config = CircleNavigatorConfig.of(context);
+    if (config.isOpeningAnimation) {
+      _controller.forward().whenComplete(() => config.onOpenAnimationComplete());
+    } else if (config.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => config.onCloseAnimationComplete());
     }
   }
 

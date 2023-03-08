@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Circle UI Navigator example'),
         ),
-        body: CircleNavigatorParams(
+        body: CircleNavigatorConfig(
           animatedRippleColor: const Color.fromRGBO(102, 160, 254, 0.7),
           filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
           isOpeningAnimation: _isOpeningAnimation,

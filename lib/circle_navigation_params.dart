@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CircleNavigatorParams extends InheritedWidget {
-  const CircleNavigatorParams({
+class CircleNavigatorConfig extends InheritedWidget {
+  const CircleNavigatorConfig({
     required this.animatedRippleColor,
     required this.filledCircleColor,
     required this.isOpeningAnimation,
@@ -25,18 +25,18 @@ class CircleNavigatorParams extends InheritedWidget {
   final int backgroundAnimationDuration;
   final double iconSize;
 
-  static CircleNavigatorParams? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<CircleNavigatorParams>();
+  static CircleNavigatorConfig? maybeOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<CircleNavigatorConfig>();
   }
 
-  static CircleNavigatorParams of(BuildContext context) {
-    final CircleNavigatorParams? result = maybeOf(context);
+  static CircleNavigatorConfig of(BuildContext context) {
+    final CircleNavigatorConfig? result = maybeOf(context);
     assert(result != null, 'No ClosingAnimationInheriterdParams found in the context');
     return result!;
   }
 
   @override
-  bool updateShouldNotify(CircleNavigatorParams oldWidget) {
+  bool updateShouldNotify(CircleNavigatorConfig oldWidget) {
     return isOpeningAnimation != oldWidget.isOpeningAnimation || isClosingAnimation != oldWidget.isClosingAnimation;
     // todo test lambda equality
   }
