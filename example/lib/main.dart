@@ -50,18 +50,16 @@ class _MyAppState extends State<MyApp> {
             iconSize: 48.0,
             isClosingAnimation: _isClosingAnimation,
             onCloseAnimationComplete: () {
-              () {
-                /**
-                  * Add navigation call based on your navigation setup.
-                  * This one works only on Android.
-                  */
-                if (Navigator.canPop(context)) {
-                  Navigator.pop(context);
-                } else {
-                  SystemNavigator.pop();
-                }
-                _isClosingAnimation = false;
-              };
+              /**
+              * Add navigation call based on your navigation setup.
+              * This one works only on Android.
+              */
+              if (Navigator.canPop(context)) {
+                Navigator.pop(context);
+              } else {
+                SystemNavigator.pop();
+              }
+              _isClosingAnimation = false;
             },
             child: CircleNavigator(
               actionIcons: [
