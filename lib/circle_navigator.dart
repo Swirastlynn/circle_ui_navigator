@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:circle_ui_navigator/animated_ripple_background.dart';
+import 'package:circle_ui_navigator/circle_calculator.dart';
 import 'package:circle_ui_navigator/extensions.dart';
 import 'package:circle_ui_navigator/icons_circle.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
@@ -11,19 +10,17 @@ class CircleNavigator extends StatelessWidget {
     Key? key,
     required this.actionIcons, // should be between 3 and 10 icons, looks gorgeous for 5, 6 or 7
     required this.closeIcon,
+    required this.calculator,
   }) : super(key: key);
 
   final List<TappableIconData> actionIcons;
   final TappableIconData closeIcon;
+  final CircleCalculator calculator;
 
   @override
   Widget build(BuildContext context) {
-    double iconSize = context.config.iconSize; // todo calculations to separate class
-    double smallCircleSize = actionIcons.length * iconSize * 3 / (2 * pi);
-    double bigCircleSize = actionIcons.length * iconSize * 2 / (2 * pi);
-    final double circleRadius = (actionIcons.length <= 3) ? smallCircleSize : bigCircleSize;
-    final double circleDiameter = circleRadius * 2;
-    final boxSize = circleDiameter + iconSize;
+    double radius = calculator.calculateRadius(actionIcons.length, context.config.iconSize);
+    double boxSize = radius * 2 + context.config.iconSize;
 
     return Stack(
       children: [
@@ -35,8 +32,7 @@ class CircleNavigator extends StatelessWidget {
             actionIcons: actionIcons,
             closeIcon: closeIcon,
             boxSize: boxSize,
-            circleRadius: circleRadius,
-            circleDiameter: circleDiameter,
+            radius: radius,
           ),
         ),
       ],

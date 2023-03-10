@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:circle_ui_navigator/circle_calculator.dart';
 import 'package:circle_ui_navigator/circle_navigation_config.dart';
 import 'package:circle_ui_navigator/circle_navigator.dart';
 import 'package:circle_ui_navigator/extensions.dart';
@@ -142,6 +143,7 @@ class _MyAppState extends State<MyApp> {
                 outerBorderSize: 12,
                 innerBorderColor: Colors.white,
               ),
+              calculator: CircleCalculatorImpl(),
             ),
           );
         }),

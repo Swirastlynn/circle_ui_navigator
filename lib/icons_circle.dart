@@ -11,15 +11,13 @@ class IconsCircle extends StatelessWidget {
     required this.actionIcons,
     required this.closeIcon,
     required this.boxSize,
-    required this.circleRadius,
-    required this.circleDiameter,
+    required this.radius,
   }) : super(key: key);
 
   final List<TappableIconData> actionIcons;
   final TappableIconData closeIcon;
   final double boxSize;
-  final double circleRadius;
-  final double circleDiameter;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +26,7 @@ class IconsCircle extends StatelessWidget {
         icons: actionIcons,
         closeIcon: closeIcon,
         boxSize: boxSize,
-        circleRadius: circleRadius,
-        circleDiameter: circleDiameter,
+        radius: radius,
       ),
     );
   }
@@ -41,20 +38,18 @@ class IconsPositionedOnCircle extends StatelessWidget {
     required this.icons,
     required this.closeIcon,
     required this.boxSize,
-    required this.circleRadius,
-    required this.circleDiameter,
+    required this.radius,
   });
 
   final List<TappableIconData> icons;
   final TappableIconData closeIcon;
   final double boxSize;
-  final double circleRadius;
-  final double circleDiameter;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
-     double iconSize = context.config.iconSize;
-     double iconRadius = iconSize / 2;
+    double iconSize = context.config.iconSize;
+    double iconRadius = iconSize / 2;
     return SizedBox(
       width: boxSize,
       height: boxSize,
@@ -62,8 +57,8 @@ class IconsPositionedOnCircle extends StatelessWidget {
         children: [
           Center(
             child: Container(
-              width: circleDiameter,
-              height: circleDiameter,
+              width: radius * 2,
+              height: radius * 2,
               decoration: BoxDecoration(
                 color: context.config.filledCircleColor,
                 shape: BoxShape.circle,
@@ -74,8 +69,8 @@ class IconsPositionedOnCircle extends StatelessWidget {
             icons.length,
             (index) {
               final double angle = 2 * pi * index / icons.length;
-              final double x = circleRadius + circleRadius * cos(angle) - iconSize / 2 + iconRadius;
-              final double y = circleRadius + circleRadius * sin(angle) - iconSize / 2 + iconRadius;
+              final double x = radius + radius * cos(angle) - iconSize / 2 + iconRadius;
+              final double y = radius + radius * sin(angle) - iconSize / 2 + iconRadius;
               return Positioned(
                 left: x,
                 top: y,
@@ -88,8 +83,8 @@ class IconsPositionedOnCircle extends StatelessWidget {
             },
           ),
           Positioned(
-            left: circleDiameter / 2,
-            top: circleDiameter / 2,
+            left: radius,
+            top: radius,
             width: iconSize,
             height: iconSize,
             child: TappableIcon(
