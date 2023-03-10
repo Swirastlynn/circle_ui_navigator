@@ -1,11 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:circle_ui_navigator/circle_calculator.dart';
-import 'package:circle_ui_navigator/circle_navigation_config.dart';
+import 'package:circle_ui_navigator/config/circle_navigation_config.dart';
 import 'package:circle_ui_navigator/circle_navigator.dart';
-import 'package:circle_ui_navigator/extensions.dart';
-import 'package:circle_ui_navigator/tappable_icon_data.dart';
+import 'package:circle_ui_navigator/utils/extensions.dart';
+import 'package:circle_ui_navigator/icons_circle/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -143,7 +142,6 @@ class _MyAppState extends State<MyApp> {
                 outerBorderSize: 12,
                 innerBorderColor: Colors.white,
               ),
-              calculator: CircleCalculatorImpl(),
             ),
           );
         }),

@@ -1,4 +1,4 @@
-import 'package:circle_ui_navigator/tappable_icon_data.dart';
+import 'package:circle_ui_navigator/icons_circle/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
