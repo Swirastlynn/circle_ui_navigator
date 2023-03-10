@@ -1,4 +1,4 @@
-import 'package:circle_ui_navigator/icons_circle/tappable_icon_data.dart';
+import 'package:circle_ui_navigator/src/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,11 +11,10 @@ class TappableIcon extends StatefulWidget {
   });
 
   @override
-  // ignore: library_private_types_in_public_api
-  _TappableIconState createState() => _TappableIconState();
+  TappableIconState createState() => TappableIconState();
 }
 
-class _TappableIconState extends State<TappableIcon> {
+class TappableIconState extends State<TappableIcon> {
   bool _isTapped = false;
 
   @override

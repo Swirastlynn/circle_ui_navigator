@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:circle_ui_navigator/config/circle_navigation_config.dart';
+
+import 'package:circle_ui_navigator/src/circle_navigator_config.dart';
 import 'package:flutter/material.dart';
 
 extension BuildContextExtension on BuildContext {

@@ -1,12 +1,9 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:circle_ui_navigator/config/circle_navigation_config.dart';
-import 'package:circle_ui_navigator/circle_navigator.dart';
-import 'package:circle_ui_navigator/utils/extensions.dart';
-import 'package:circle_ui_navigator/icons_circle/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +49,7 @@ class _MyAppState extends State<MyApp> {
             onCloseAnimationComplete: () {
               /**
               * Add navigation call based on your navigation setup.
-              * This one works only on Android.
+              * This one is tested only on Android and OSX.
               */
               if (Navigator.canPop(context)) {
                 Navigator.pop(context);

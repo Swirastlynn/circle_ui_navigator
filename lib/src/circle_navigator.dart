@@ -1,14 +1,20 @@
-import 'package:circle_ui_navigator/background/animated_ripple_background.dart';
-import 'package:circle_ui_navigator/icons_circle/icons_circle.dart';
-import 'package:circle_ui_navigator/icons_circle/tappable_icon_data.dart';
-import 'package:circle_ui_navigator/utils/calculus.dart';
-import 'package:circle_ui_navigator/utils/extensions.dart';
+import 'package:circle_ui_navigator/src/background/animated_ripple_background.dart';
+import 'package:circle_ui_navigator/src/icons_circle/icons_circle.dart';
+import 'package:circle_ui_navigator/src/tappable_icon_data.dart';
+import 'package:circle_ui_navigator/src/utils/calculus.dart';
+import 'package:circle_ui_navigator/src/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
+/// Part of the configuration. Child of [CircleNavigatorConfig].
+///
+/// [actionIcons] contains predefined icons data.
+/// Its count should be between 3 and 10. The widget looks gorgeous for 5, 6 or 7 icons.
+/// [closeIcon] contains predefined close icon data.
+/// It's the one in the middle of the widget.
 class CircleNavigator extends StatelessWidget {
   const CircleNavigator({
     Key? key,
-    required this.actionIcons, // should be between 3 and 10 icons, looks gorgeous for 5, 6 or 7
+    required this.actionIcons,
     required this.closeIcon,
   }) : super(key: key);
 

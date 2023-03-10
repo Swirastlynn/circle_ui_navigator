@@ -1,5 +1,5 @@
+import 'package:circle_ui_navigator/src/utils/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:circle_ui_navigator/utils/extensions.dart';
 
 class AnimatedIconsCircle extends StatefulWidget {
   const AnimatedIconsCircle({
