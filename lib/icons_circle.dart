@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:circle_ui_navigator/animated_icons_circle.dart';
-import 'package:circle_ui_navigator/circle_navigation_params.dart';
+import 'package:circle_ui_navigator/extensions.dart';
 import 'package:circle_ui_navigator/tappable_icon.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
@@ -10,19 +10,26 @@ class IconsCircle extends StatelessWidget {
     Key? key,
     required this.actionIcons,
     required this.closeIcon,
+    required this.boxSize,
+    required this.circleRadius,
+    required this.circleDiameter,
   }) : super(key: key);
 
   final List<TappableIconData> actionIcons;
   final TappableIconData closeIcon;
+  final double boxSize;
+  final double circleRadius;
+  final double circleDiameter;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AnimatedIconsCircle(
-        child: IconsPositionedOnCircle(
-          icons: actionIcons,
-          closeIcon: closeIcon,
-        ),
+    return AnimatedIconsCircle(
+      child: IconsPositionedOnCircle(
+        icons: actionIcons,
+        closeIcon: closeIcon,
+        boxSize: boxSize,
+        circleRadius: circleRadius,
+        circleDiameter: circleDiameter,
       ),
     );
   }
@@ -33,21 +40,21 @@ class IconsPositionedOnCircle extends StatelessWidget {
     super.key,
     required this.icons,
     required this.closeIcon,
+    required this.boxSize,
+    required this.circleRadius,
+    required this.circleDiameter,
   });
 
   final List<TappableIconData> icons;
   final TappableIconData closeIcon;
+  final double boxSize;
+  final double circleRadius;
+  final double circleDiameter;
 
   @override
   Widget build(BuildContext context) {
-    final config = CircleNavigatorConfig.of(context);
-    double iconSize = config.iconSize;
-    double iconRadius = iconSize / 2;
-    final double circleRadius =
-        ((icons.length <= 3) ? (icons.length * iconSize * 3) : (icons.length * iconSize * 2)) / (2 * pi);
-    final double circleDiameter = circleRadius * 2;
-    final boxSize = circleDiameter + iconSize;
-
+     double iconSize = context.config.iconSize;
+     double iconRadius = iconSize / 2;
     return SizedBox(
       width: boxSize,
       height: boxSize,
@@ -58,7 +65,7 @@ class IconsPositionedOnCircle extends StatelessWidget {
               width: circleDiameter,
               height: circleDiameter,
               decoration: BoxDecoration(
-                color: config.filledCircleColor,
+                color: context.config.filledCircleColor,
                 shape: BoxShape.circle,
               ),
             ),

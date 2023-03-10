@@ -1,4 +1,5 @@
-import 'package:circle_ui_navigator/circle_navigation_params.dart';
+import 'dart:math';
+import 'package:circle_ui_navigator/extensions.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
@@ -11,7 +12,7 @@ class AnimatedRippleBackground extends StatefulWidget {
 }
 
 class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with SingleTickerProviderStateMixin {
-  late final _animationDuration = CircleNavigatorConfig.of(context).backgroundAnimationDuration;
+  late final _animationDuration = context.config.backgroundAnimationDuration;
   late final _controller = AnimationController(
     duration: Duration(milliseconds: _animationDuration),
     vsync: this,
@@ -26,11 +27,10 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var config = CircleNavigatorConfig.of(context);
-    if (config.isOpeningAnimation) {
-      _controller.forward().whenComplete(() => config.onOpenAnimationComplete());
-    } else if (config.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => config.onCloseAnimationComplete());
+    if (context.config.isOpeningAnimation) {
+      _controller.forward().whenComplete(() => context.config.onOpenAnimationComplete());
+    } else if (context.config.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => context.config.onCloseAnimationComplete());
     }
   }
 
@@ -40,35 +40,39 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
       child: CustomPaint(
         size: const Size(double.infinity, double.infinity),
         painter: _RipplePainter(
-          animation: CurvedAnimation(
-            parent: _controller,
-            curve: Curves.easeOutSine,
-          ),
-          rippleColor: CircleNavigatorConfig.of(context).animatedRippleColor,
-        ),
+            animation: CurvedAnimation(
+              parent: _controller,
+              curve: Curves.easeOutSine,
+            ),
+            color: context.config.animatedRippleColor,
+            center: context.config.center,
+            radius: context.distanceToTheFurthestScreenCorner(context.config.center)),
       ),
     );
   }
 }
 
 class _RipplePainter extends CustomPainter {
-  _RipplePainter({required this.animation, required this.rippleColor})
-      : _paint = Paint(),
+  _RipplePainter({
+    required this.animation,
+    required this.color,
+    required this.center,
+    required this.radius,
+  })  : _paint = Paint(),
         super(repaint: animation);
 
   final Animation<double> animation;
-  final Color rippleColor;
+  final Color color;
+  final Point center;
+  final double radius;
+
   final Paint _paint;
 
   @override
   void paint(Canvas canvas, Size size) {
     _paint
-      ..color = rippleColor
+      ..color = color
       ..style = PaintingStyle.fill;
-
-    var centralPoint = Offset(size.width / 2, size.height / 2); // TODO pass via parameter
-    var radiusOfCircumscribedCircle = centralPoint
-        .distance; // TODO for any place on the screen as the center of the ripple, the furthest vertex has to be taken into account
 
     var value = animation.value;
     if (value >= 0.0 && value <= 1.0) {
@@ -76,8 +80,8 @@ class _RipplePainter extends CustomPainter {
         Path()
           ..addOval(
             Rect.fromCircle(
-              center: centralPoint,
-              radius: radiusOfCircumscribedCircle * value,
+              center: Offset(center.x.toDouble(), center.y.toDouble()),
+              radius: radius * value,
             ),
           ),
         _paint,

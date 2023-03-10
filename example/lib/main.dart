@@ -1,5 +1,9 @@
-import 'package:circle_ui_navigator/circle_navigation_params.dart';
+import 'dart:math';
+import 'dart:ui';
+
+import 'package:circle_ui_navigator/circle_navigation_config.dart';
 import 'package:circle_ui_navigator/circle_navigator.dart';
+import 'package:circle_ui_navigator/extensions.dart';
 import 'package:circle_ui_navigator/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,112 +31,122 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Circle UI Navigator example'),
         ),
-        body: CircleNavigatorConfig(
-          animatedRippleColor: const Color.fromRGBO(102, 160, 254, 0.7),
-          filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
-          isOpeningAnimation: _isOpeningAnimation,
-          onOpenAnimationComplete: () {
-            _isOpeningAnimation = false;
-          },
-          isClosingAnimation: _isClosingAnimation,
-          onCloseAnimationComplete: () {
-            () {
-              /**
-              * Add navigation call based on your navigation setup.
-              * This one works only on Android.
-              */
-              if (Navigator.canPop(context)) {
-                Navigator.pop(context);
-              } else {
-                SystemNavigator.pop();
-              }
-              _isClosingAnimation = false;
-            };
-          },
-          iconSize: 48.0,
-          child: CircleNavigator(
-            actionIcons: [
-              TappableIconData(
-                assetPath: 'assets/images/local_florist.svg',
-                color: Colors.green,
-                tappedColor: Colors.grey,
-                onTap: () {
-                  /**
+        body: Builder(builder: (context) {
+          double pageWidth = context.screenWidth;
+          double pageHeight = context.availableScreenHeight(
+            statusBarHeight: MediaQueryData.fromWindow(window).padding.top,
+            appBarHeight: 0,
+            bottomNavigationBarHeight: kBottomNavigationBarHeight,
+          );
+
+          return CircleNavigatorConfig(
+            center: Point(pageWidth / 2, pageHeight / 2),
+            animatedRippleColor: const Color(0xFF66A0FE).withOpacity(0.7),
+            filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
+            isOpeningAnimation: _isOpeningAnimation,
+            onOpenAnimationComplete: () {
+              _isOpeningAnimation = false;
+            },
+            iconSize: 48.0,
+            isClosingAnimation: _isClosingAnimation,
+            onCloseAnimationComplete: () {
+              () {
+                /**
                   * Add navigation call based on your navigation setup.
+                  * This one works only on Android.
                   */
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                } else {
+                  SystemNavigator.pop();
+                }
+                _isClosingAnimation = false;
+              };
+            },
+            child: CircleNavigator(
+              actionIcons: [
+                TappableIconData(
+                  assetPath: 'assets/images/local_florist.svg',
+                  color: Colors.green,
+                  tappedColor: Colors.grey,
+                  onTap: () {
+                    /**
+                      * Add navigation call based on your navigation setup.
+                      */
+                  },
+                  outerBorderColor: Colors.white,
+                  outerBorderSize: 10,
+                  innerBorderColor: Colors.white,
+                ),
+                TappableIconData(
+                  assetPath: 'assets/images/local_activity.svg',
+                  color: Colors.purple,
+                  tappedColor: Colors.grey,
+                  onTap: () {
+                    /**
+                      * Add navigation call based on your navigation setup.
+                      */
+                  },
+                  outerBorderColor: Colors.white,
+                  outerBorderSize: 10,
+                  innerBorderColor: Colors.white,
+                ),
+                TappableIconData(
+                  assetPath: 'assets/images/restaurant.svg',
+                  color: Colors.orange.shade700,
+                  tappedColor: Colors.grey,
+                  onTap: () {
+                    /**
+                      * Add navigation call based on your navigation setup.
+                      */
+                  },
+                  outerBorderColor: Colors.white,
+                  outerBorderSize: 10,
+                  innerBorderColor: Colors.white,
+                ),
+                TappableIconData(
+                  assetPath: 'assets/images/baby_changing_station.svg',
+                  color: Colors.red.shade700,
+                  tappedColor: Colors.grey,
+                  onTap: () {
+                    /**
+                      * Add navigation call based on your navigation setup.
+                      */
+                  },
+                  outerBorderColor: Colors.white,
+                  outerBorderSize: 10,
+                  innerBorderColor: Colors.white,
+                ),
+                TappableIconData(
+                  assetPath: 'assets/images/construction.svg',
+                  color: Colors.yellow.shade800,
+                  tappedColor: Colors.grey,
+                  onTap: () {
+                    /**
+                      * Add navigation call based on your navigation setup.
+                      */
+                  },
+                  outerBorderColor: Colors.white,
+                  outerBorderSize: 10,
+                  innerBorderColor: Colors.white,
+                ),
+              ],
+              closeIcon: TappableIconData(
+                color: const Color(0xFF3678D0),
+                assetPath: 'assets/images/close.svg',
+                tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
+                onTap: () {
+                  setState(() {
+                    _isClosingAnimation = true;
+                  });
                 },
-                outerBorderColor: Colors.white,
-                outerBorderSize: 10,
+                outerBorderColor: Colors.white54,
+                outerBorderSize: 12,
                 innerBorderColor: Colors.white,
               ),
-              TappableIconData(
-                assetPath: 'assets/images/local_activity.svg',
-                color: Colors.purple,
-                tappedColor: Colors.grey,
-                onTap: () {
-                  /**
-                  * Add navigation call based on your navigation setup.
-                  */
-                },
-                outerBorderColor: Colors.white,
-                outerBorderSize: 10,
-                innerBorderColor: Colors.white,
-              ),
-              TappableIconData(
-                assetPath: 'assets/images/restaurant.svg',
-                color: Colors.orange.shade700,
-                tappedColor: Colors.grey,
-                onTap: () {
-                  /**
-                  * Add navigation call based on your navigation setup.
-                  */
-                },
-                outerBorderColor: Colors.white,
-                outerBorderSize: 10,
-                innerBorderColor: Colors.white,
-              ),
-              TappableIconData(
-                assetPath: 'assets/images/baby_changing_station.svg',
-                color: Colors.red.shade700,
-                tappedColor: Colors.grey,
-                onTap: () {
-                  /**
-                  * Add navigation call based on your navigation setup.
-                  */
-                },
-                outerBorderColor: Colors.white,
-                outerBorderSize: 10,
-                innerBorderColor: Colors.white,
-              ),
-              TappableIconData(
-                assetPath: 'assets/images/construction.svg',
-                color: Colors.yellow.shade800,
-                tappedColor: Colors.grey,
-                onTap: () {
-                  /**
-                  * Add navigation call based on your navigation setup.
-                  */
-                },
-                outerBorderColor: Colors.white,
-                outerBorderSize: 10,
-                innerBorderColor: Colors.white,
-              ),
-            ],
-            closeIcon: TappableIconData(
-              color: const Color(0xFF3678D0),
-              assetPath: 'assets/images/close.svg',
-              tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
-              onTap: () {
-                setState(() {
-                  _isClosingAnimation = true;
-                });
-              },
-              outerBorderColor: Colors.white54,
-              outerBorderSize: 12,
-              innerBorderColor: Colors.white,
             ),
-          ),
-        ),
+          );
+        }),
       ),
     );
   }

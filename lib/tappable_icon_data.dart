@@ -25,7 +25,7 @@ class TappableIconData extends Equatable {
         assetPath,
         color,
         tappedColor,
-        onTap, // todo how it behaves for IconData?
+        onTap,
         outerBorderColor,
         outerBorderSize,
       ];

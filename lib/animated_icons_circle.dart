@@ -1,4 +1,4 @@
-import 'package:circle_ui_navigator/circle_navigation_params.dart';
+import 'package:circle_ui_navigator/extensions.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedIconsCircle extends StatefulWidget {
@@ -16,7 +16,7 @@ class AnimatedIconsCircle extends StatefulWidget {
 class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerProviderStateMixin {
   double scale = 1.0;
 
-  late final _animationDuration = CircleNavigatorConfig.of(context).backgroundAnimationDuration;
+  late final _animationDuration = context.config.backgroundAnimationDuration;
   late final _controller = AnimationController(
     duration: Duration(milliseconds: _animationDuration),
     vsync: this,
@@ -31,11 +31,10 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var config = CircleNavigatorConfig.of(context);
-    if (config.isOpeningAnimation) {
-      _controller.forward().whenComplete(() => config.onOpenAnimationComplete());
-    } else if (config.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => config.onCloseAnimationComplete());
+    if (context.config.isOpeningAnimation) {
+      _controller.forward().whenComplete(() => context.config.onOpenAnimationComplete());
+    } else if (context.config.isClosingAnimation) {
+      _controller.reverse().whenComplete(() => context.config.onCloseAnimationComplete());
     }
   }
 
@@ -53,10 +52,7 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
       turns: reverseTween.animate(curvedAnimation),
       child: ScaleTransition(
         scale: curvedAnimation,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: widget.child,
-        ),
+        child: widget.child,
       ),
     );
   }
