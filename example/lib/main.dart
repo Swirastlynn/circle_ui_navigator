@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 
+/// An example of how to show the widget in the middle of the screen.
 void main() {
   runApp(const MyApp());
 }

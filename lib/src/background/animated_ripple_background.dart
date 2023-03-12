@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../utils/extensions.dart';
 
+/// An animation making the background more interesting with a fullscreen ripple effect.
 class AnimatedRippleBackground extends StatefulWidget {
   const AnimatedRippleBackground({
     super.key,
