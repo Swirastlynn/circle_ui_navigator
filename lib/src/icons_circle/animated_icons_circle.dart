@@ -36,7 +36,7 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerPr
     if (context.config.isOpeningAnimation) {
       _controller.forward().whenComplete(() => context.config.onOpenAnimationComplete());
     } else if (context.config.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => context.config.onCloseAnimationComplete());
+      _controller.forward(from: 0.0).whenComplete(() => context.config.onCloseAnimationComplete());
     }
   }
 

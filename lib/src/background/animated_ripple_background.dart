@@ -33,7 +33,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground> with
     if (context.config.isOpeningAnimation) {
       _controller.forward().whenComplete(() => context.config.onOpenAnimationComplete());
     } else if (context.config.isClosingAnimation) {
-      _controller.reverse().whenComplete(() => context.config.onCloseAnimationComplete());
+      _controller.forward(from: 0.0).whenComplete(() => context.config.onCloseAnimationComplete());
     }
   }
 
