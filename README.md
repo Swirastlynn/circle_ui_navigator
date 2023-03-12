@@ -5,6 +5,9 @@ An inspiration is a [design](https://www.behance.net/gallery/53917017/100-Mobile
 ## How does it look?
 
 
+| Open                                                                                                              | Close                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| <video src="https://user-images.githubusercontent.com/774194/224566908-ade6e84b-b2ee-4a3d-bf4f-77934367f61c.mp4"> | <video src="https://user-images.githubusercontent.com/774194/224566967-d0812b64-2f12-4a3f-bd3a-cc9c35e74635.mp4"> |
 
 ## Installation
 
