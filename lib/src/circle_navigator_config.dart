@@ -1,7 +1,8 @@
 import 'dart:math';
 
-import 'package:circle_ui_navigator/src/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
+
+import 'tappable_icon_data.dart';
 
 /// Entry point of the library. Use it in your project.
 ///
@@ -17,7 +18,7 @@ import 'package:flutter/material.dart';
 /// [backgroundAnimationDuration] - background ripple animation in milliseconds
 /// [iconSize] - default size of the icon
 /// [actionIcons] contains predefined icons data.
-/// Its count should be between 3 and 10. The widget looks gorgeous for 5, 6 or 7 icons.
+/// Icons count should be between 3 and 10. The widget looks gorgeous for 5, 6 or 7 icons.
 /// [closeIcon] contains predefined close icon data. It's the one in the middle of the widget.
 /// [child] - [CircleNavigator]. The core widget.
 class CircleNavigatorConfig extends InheritedWidget {

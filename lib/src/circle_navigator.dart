@@ -1,8 +1,9 @@
-import 'package:circle_ui_navigator/src/background/animated_ripple_background.dart';
-import 'package:circle_ui_navigator/src/icons_circle/icons_circle.dart';
-import 'package:circle_ui_navigator/src/utils/calculus.dart';
-import 'package:circle_ui_navigator/src/utils/extensions.dart';
 import 'package:flutter/material.dart';
+
+import 'background/animated_ripple_background.dart';
+import 'icons_circle/icons_circle.dart';
+import 'utils/calculus.dart';
+import 'utils/extensions.dart';
 
 /// The widget. Set up as a child of [CircleNavigatorConfig].
 class CircleNavigator extends StatelessWidget {

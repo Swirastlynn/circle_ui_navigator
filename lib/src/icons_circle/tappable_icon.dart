@@ -1,6 +1,7 @@
-import 'package:circle_ui_navigator/src/tappable_icon_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../tappable_icon_data.dart';
 
 class TappableIcon extends StatefulWidget {
   final TappableIconData tappableIconData;

@@ -1,6 +1,8 @@
 import 'dart:math';
-import 'package:circle_ui_navigator/src/utils/extensions.dart';
+
 import 'package:flutter/material.dart';
+
+import '../utils/extensions.dart';
 
 class AnimatedRippleBackground extends StatefulWidget {
   const AnimatedRippleBackground({

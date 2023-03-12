@@ -1,8 +1,8 @@
 import 'dart:math';
-import 'package:circle_ui_navigator/src/icons_circle/animated_icons_circle.dart';
-import 'package:circle_ui_navigator/src/icons_circle/tappable_icon.dart';
-import 'package:circle_ui_navigator/src/tappable_icon_data.dart';
-import 'package:circle_ui_navigator/src/utils/extensions.dart';
+import 'animated_icons_circle.dart';
+import 'tappable_icon.dart';
+import '../tappable_icon_data.dart';
+import '../utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class IconsCircle extends StatelessWidget {
