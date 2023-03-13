@@ -48,7 +48,9 @@ class TappableIconState extends State<TappableIcon> {
           child: SvgPicture.asset(
             widget.tappableIconData.assetPath,
             colorFilter: ColorFilter.mode(
-              _isTapped ? widget.tappableIconData.tappedColor : widget.tappableIconData.color,
+              _isTapped
+                  ? widget.tappableIconData.tappedColor
+                  : widget.tappableIconData.color,
               BlendMode.srcIn,
             ),
           ),

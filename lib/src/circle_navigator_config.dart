@@ -22,6 +22,18 @@ import 'tappable_icon_data.dart';
 /// [closeIcon] contains predefined close icon data. It's the one in the middle of the widget.
 /// [child] - [CircleNavigator]. The core widget.
 class CircleNavigatorConfig extends InheritedWidget {
+  static CircleNavigatorConfig? maybeOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<CircleNavigatorConfig>();
+  }
+
+  static CircleNavigatorConfig of(BuildContext context) {
+    // ignore: avoid-returning-widgets
+    final CircleNavigatorConfig? result = maybeOf(context);
+    assert(result != null,
+        'No ClosingAnimationInheriterdParams found in the context');
+    return result!;
+  }
+
   const CircleNavigatorConfig({
     required this.center,
     required this.animatedRippleColor,
@@ -51,16 +63,6 @@ class CircleNavigatorConfig extends InheritedWidget {
   final double iconSize;
   final List<TappableIconData> actionIcons;
   final TappableIconData closeIcon;
-
-  static CircleNavigatorConfig? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<CircleNavigatorConfig>();
-  }
-
-  static CircleNavigatorConfig of(BuildContext context) {
-    final CircleNavigatorConfig? result = maybeOf(context);
-    assert(result != null, 'No ClosingAnimationInheriterdParams found in the context');
-    return result!;
-  }
 
   @override
   bool updateShouldNotify(CircleNavigatorConfig oldWidget) {

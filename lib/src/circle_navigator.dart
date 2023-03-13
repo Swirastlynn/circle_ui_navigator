@@ -11,7 +11,10 @@ class CircleNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double radius = calculateIconsCircleRadius(context.config.actionIcons.length, context.config.iconSize);
+    double radius = calculateIconsCircleRadius(
+      context.config.actionIcons.length,
+      context.config.iconSize,
+    );
     double boxSize = radius * 2 + context.config.iconSize;
 
     return Stack(
