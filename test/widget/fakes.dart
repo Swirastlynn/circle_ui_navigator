@@ -9,8 +9,8 @@ import 'package:flutter_test/flutter_test.dart';
 bool _isOpeningAnimation = true;
 bool _isClosingAnimation = false;
 
-Config configFake(int actionIconsCount) => Config(
-      center: const Point(400, 300), // todo should be on phone, is on 800x600 right now
+Config fakeConfig(int actionIconsCount, Size size) => Config(
+      center: Point(size.width / 2, size.height / 2),
       animatedRippleColor: const Color(0xFF66A0FE).withOpacity(0.7),
       filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
       isOpeningAnimation: _isOpeningAnimation,
@@ -22,11 +22,11 @@ Config configFake(int actionIconsCount) => Config(
         _isClosingAnimation = false;
       },
       iconSize: 48.0,
-      actionIcons: actionIconsFake(actionIconsCount),
-      closeIcon: closeIconFake,
+      actionIcons: fakeActionIcons(actionIconsCount),
+      closeIcon: fakeCloseIcon,
     );
 
-List<TappableIconData> actionIconsFake(int actionIconsCount) => List<TappableIconData>.of(
+List<TappableIconData> fakeActionIcons(int actionIconsCount) => List<TappableIconData>.of(
       List.filled(
           actionIconsCount,
           TappableIconData(
@@ -40,7 +40,7 @@ List<TappableIconData> actionIconsFake(int actionIconsCount) => List<TappableIco
           )),
     );
 
-var closeIconFake = TappableIconData(
+var fakeCloseIcon = TappableIconData(
   color: const Color(0xFF3678D0),
   assetPath: 'assets/images/close.svg',
   tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
@@ -55,15 +55,15 @@ var closeIconFake = TappableIconData(
 class FakeAssetBundle extends Fake implements AssetBundle {
   @override
   Future<String> loadString(String key, {bool cache = true}) async {
-    return svgStr;
+    return fakeSvgStr;
   }
 
   @override
   Future<ByteData> load(String key) async {
-    return Uint8List.fromList(utf8.encode(svgStr)).buffer.asByteData();
+    return Uint8List.fromList(utf8.encode(fakeSvgStr)).buffer.asByteData();
   }
 
-  String svgStr = '''
+  String fakeSvgStr = '''
 <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
 <path d="M480 976q0-70 30-135t80-115q50-50 115-80t135-30q0 70-30 135t-80 115q-50 50-115
  80t-135 30Zm75-75q80-26 133-79t79-133q-80 26-133 79.5T555 901Zm-75
