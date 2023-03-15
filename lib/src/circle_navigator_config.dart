@@ -1,25 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-import 'tappable_icon_data.dart';
+import 'config.dart';
 
-/// Entry point of the library. Use it in your project.
-///
-/// [center] - central point of the widget and background ripple animation.
-/// It's up to you to be sure that the widget is on the screen.
-/// [animatedRippleColor] - color of the background ripple animation
-/// [filledCircleColor] - color of the circle whose radius intersects icons
-/// [isOpeningAnimation] - is the opening animation happenning at the moment
-/// [onOpenAnimationComplete] - lambda to call for open animation
-/// [isClosingAnimation] - is the closing animation happenning at the moment
-/// [onCloseAnimationComplete] - lambda to call for close animation
-/// [animationDuration] - circle navigator animation in milliseconds
-/// [backgroundAnimationDuration] - background ripple animation in milliseconds
-/// [iconSize] - default size of the icon
-/// [actionIcons] contains predefined icons data.
-/// Icons count should be between 3 and 10. The widget looks gorgeous for 5, 6 or 7 icons.
-/// [closeIcon] contains predefined close icon data. It's the one in the middle of the widget.
+/// Entry point of the library.
+/// [config] - [Config] class responsible for customization the widget.
 /// [child] - [CircleNavigator]. The core widget.
 class CircleNavigatorConfig extends InheritedWidget {
   static CircleNavigatorConfig? maybeOf(BuildContext context) {
@@ -29,46 +13,23 @@ class CircleNavigatorConfig extends InheritedWidget {
   static CircleNavigatorConfig of(BuildContext context) {
     // ignore: avoid-returning-widgets
     final CircleNavigatorConfig? result = maybeOf(context);
-    assert(result != null,
-        'No ClosingAnimationInheriterdParams found in the context');
+    assert(result != null, 'No ClosingAnimationInheriterdParams found in the context');
     return result!;
   }
 
   const CircleNavigatorConfig({
-    required this.center,
-    required this.animatedRippleColor,
-    required this.filledCircleColor,
-    required this.isOpeningAnimation,
-    required this.onOpenAnimationComplete,
-    required this.isClosingAnimation,
-    required this.onCloseAnimationComplete,
-    this.animationDuration = 800,
-    this.backgroundAnimationDuration = 800,
-    required this.iconSize,
-    required this.actionIcons,
-    required this.closeIcon,
+    required this.config,
     required super.child,
     super.key,
   });
 
-  final Point<double> center;
-  final Color animatedRippleColor;
-  final Color filledCircleColor;
-  final bool isOpeningAnimation;
-  final void Function() onOpenAnimationComplete;
-  final bool isClosingAnimation;
-  final void Function() onCloseAnimationComplete;
-  final int animationDuration;
-  final int backgroundAnimationDuration;
-  final double iconSize;
-  final List<TappableIconData> actionIcons;
-  final TappableIconData closeIcon;
+  final Config config;
 
   @override
   bool updateShouldNotify(CircleNavigatorConfig oldWidget) {
-    return isOpeningAnimation != oldWidget.isOpeningAnimation ||
-        isClosingAnimation != oldWidget.isClosingAnimation ||
-        onOpenAnimationComplete != oldWidget.onOpenAnimationComplete ||
-        onCloseAnimationComplete != oldWidget.onCloseAnimationComplete;
+    return config.isOpeningAnimation != oldWidget.config.isOpeningAnimation ||
+        config.isClosingAnimation != oldWidget.config.isClosingAnimation ||
+        config.onOpenAnimationComplete != oldWidget.config.onOpenAnimationComplete ||
+        config.onCloseAnimationComplete != oldWidget.config.onCloseAnimationComplete;
   }
 }
