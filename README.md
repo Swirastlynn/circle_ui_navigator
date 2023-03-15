@@ -28,107 +28,115 @@ import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 Then, use `CircleNavigatorConfig` in place of a widget. 
 You can customize all of the parameters shown below, and a few more.
 ```dart
-CircleNavigatorConfig(
-    center: Point(200, 300), // of your choice and your responsibility to not draw a widget outside of the screen.
-    animatedRippleColor: const Color(0xFF66A0FE).withOpacity(0.7),
-    filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
-    isOpeningAnimation: _isOpeningAnimation,
-    onOpenAnimationComplete: () {
-        /**
-        * You can add an optional reaction here if you like.
-        */
-        _isOpeningAnimation = false; // leave this line
-    },
-    isClosingAnimation: _isClosingAnimation,
-    onCloseAnimationComplete: () {
-        /**
-        * Add navigation call based on your navigation setup.
-        */
-        _isClosingAnimation = false; // leave this line
-    },
-    iconSize: 48.0,
-    actionIcons: [
-        TappableIconData(
-            assetPath: 'assets/images/local_florist.svg',
-            color: Colors.green,
-            tappedColor: Colors.grey,
-            onTap: () {
-                /**
-                * Add navigation call based on your navigation setup.
-                */
-            },
-            outerBorderColor: Colors.white,
-            outerBorderSize: 10,
-            innerBorderColor: Colors.white,
-        ),
-        TappableIconData(
-            assetPath: 'assets/images/local_activity.svg',
-            color: Colors.purple,
-            tappedColor: Colors.grey,
-            onTap: () {
-                /**
-                * Add navigation call based on your navigation setup.
-                */
-            },
-            outerBorderColor: Colors.white,
-            outerBorderSize: 10,
-            innerBorderColor: Colors.white,
-        ),
-        TappableIconData(
-            assetPath: 'assets/images/restaurant.svg',
-            color: Colors.orange.shade700,
-            tappedColor: Colors.grey,
-            onTap: () {
-                /**
-                * Add navigation call based on your navigation setup.
-                */
-            },
-            outerBorderColor: Colors.white,
-            outerBorderSize: 10,
-            innerBorderColor: Colors.white,
-        ),
-        TappableIconData(
-            assetPath: 'assets/images/baby_changing_station.svg',
-            color: Colors.red.shade700,
-            tappedColor: Colors.grey,
-            onTap: () {
-                /**
-                * Add navigation call based on your navigation setup.
-                */
-            },
-            outerBorderColor: Colors.white,
-            outerBorderSize: 10,
-            innerBorderColor: Colors.white,
-        ),
-        TappableIconData(
-            assetPath: 'assets/images/construction.svg',
-            color: Colors.yellow.shade800,
-            tappedColor: Colors.grey,
-            onTap: () {
-                /**
-                * Add navigation call based on your navigation setup.
-                */
-            },
-            outerBorderColor: Colors.white,
-            outerBorderSize: 10,
-            innerBorderColor: Colors.white,
-        ),
-    ],
-    closeIcon: TappableIconData(
-        color: const Color(0xFF3678D0),
-        assetPath: 'assets/images/close.svg',
-        tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
-        onTap: () {
-        setState(() {
-            _isClosingAnimation = true;
-        });
+// This code should be inside State of StatefulWidget:
+bool _isOpeningAnimation = true;
+bool _isClosingAnimation = false;
+
+@override
+Widget build(BuildContext context) {
+    ...
+    child: CircleNavigatorConfig(
+        center: Point(200, 300), // of your choice and your responsibility to not draw a widget outside of the screen.
+        animatedRippleColor: const Color(0xFF66A0FE).withOpacity(0.7),
+        filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
+        isOpeningAnimation: _isOpeningAnimation,
+        onOpenAnimationComplete: () {
+            /**
+            * You can add an optional reaction here if you like.
+            */
+            _isOpeningAnimation = false; // leave this line
         },
-        outerBorderColor: Colors.white54,
-        outerBorderSize: 12,
-        innerBorderColor: Colors.white,
-    ),
-    child: const CircleNavigator(),
-)
+        isClosingAnimation: _isClosingAnimation,
+        onCloseAnimationComplete: () {
+            /**
+            * Add navigation call based on your navigation setup.
+            */
+            _isClosingAnimation = false; // leave this line
+        },
+        iconSize: 48.0,
+        actionIcons: [
+            TappableIconData(
+                assetPath: 'assets/images/local_florist.svg',
+                color: Colors.green,
+                tappedColor: Colors.grey,
+                onTap: () {
+                    /**
+                    * Add navigation call based on your navigation setup.
+                    */
+                },
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
+            ),
+            TappableIconData(
+                assetPath: 'assets/images/local_activity.svg',
+                color: Colors.purple,
+                tappedColor: Colors.grey,
+                onTap: () {
+                    /**
+                    * Add navigation call based on your navigation setup.
+                    */
+                },
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
+            ),
+            TappableIconData(
+                assetPath: 'assets/images/restaurant.svg',
+                color: Colors.orange.shade700,
+                tappedColor: Colors.grey,
+                onTap: () {
+                    /**
+                    * Add navigation call based on your navigation setup.
+                    */
+                },
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
+            ),
+            TappableIconData(
+                assetPath: 'assets/images/baby_changing_station.svg',
+                color: Colors.red.shade700,
+                tappedColor: Colors.grey,
+                onTap: () {
+                    /**
+                    * Add navigation call based on your navigation setup.
+                    */
+                },
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
+            ),
+            TappableIconData(
+                assetPath: 'assets/images/construction.svg',
+                color: Colors.yellow.shade800,
+                tappedColor: Colors.grey,
+                onTap: () {
+                    /**
+                    * Add navigation call based on your navigation setup.
+                    */
+                },
+                outerBorderColor: Colors.white,
+                outerBorderSize: 10,
+                innerBorderColor: Colors.white,
+            ),
+        ],
+        closeIcon: TappableIconData(
+            color: const Color(0xFF3678D0),
+            assetPath: 'assets/images/close.svg',
+            tappedColor: const Color(0xFF3678D0).withOpacity(0.5),
+            onTap: () {
+            setState(() {
+                _isClosingAnimation = true;
+            });
+            },
+            outerBorderColor: Colors.white54,
+            outerBorderSize: 12,
+            innerBorderColor: Colors.white,
+        ),
+        child: const CircleNavigator(),
+    )
+}
 ```
 Refer to the [example](https://github.com/Swirastlynn/circle_ui_navigator/blob/main/example/lib/main.dart) to learn how to place a widget in the center of the screen and explore the capabilities of `CircleNavigatorConfig`.
 

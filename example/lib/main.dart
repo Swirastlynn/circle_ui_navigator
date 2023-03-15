@@ -43,10 +43,15 @@ class _MyAppState extends State<MyApp> {
             filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
             isOpeningAnimation: _isOpeningAnimation,
             onOpenAnimationComplete: () {
-              _isOpeningAnimation = false;
+              setState(() {
+                _isOpeningAnimation = false;
+              });
             },
             isClosingAnimation: _isClosingAnimation,
             onCloseAnimationComplete: () {
+              setState(() {
+                _isClosingAnimation = false;
+              });
               /**
               * Add navigation call based on your navigation setup.
               * This one is tested only on Android and OSX.
@@ -56,7 +61,6 @@ class _MyAppState extends State<MyApp> {
               } else {
                 SystemNavigator.pop();
               }
-              _isClosingAnimation = false;
             },
             iconSize: 48.0,
             actionIcons: [
@@ -66,8 +70,8 @@ class _MyAppState extends State<MyApp> {
                 tappedColor: Colors.grey,
                 onTap: () {
                   /**
-                      * Add navigation call based on your navigation setup.
-                      */
+                  * Add navigation call based on your navigation setup.
+                  */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -79,8 +83,8 @@ class _MyAppState extends State<MyApp> {
                 tappedColor: Colors.grey,
                 onTap: () {
                   /**
-                      * Add navigation call based on your navigation setup.
-                      */
+                  * Add navigation call based on your navigation setup.
+                  */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -92,8 +96,8 @@ class _MyAppState extends State<MyApp> {
                 tappedColor: Colors.grey,
                 onTap: () {
                   /**
-                      * Add navigation call based on your navigation setup.
-                      */
+                  * Add navigation call based on your navigation setup.
+                  */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -105,8 +109,8 @@ class _MyAppState extends State<MyApp> {
                 tappedColor: Colors.grey,
                 onTap: () {
                   /**
-                      * Add navigation call based on your navigation setup.
-                      */
+                  * Add navigation call based on your navigation setup.
+                  */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -118,8 +122,8 @@ class _MyAppState extends State<MyApp> {
                 tappedColor: Colors.grey,
                 onTap: () {
                   /**
-                      * Add navigation call based on your navigation setup.
-                      */
+                  * Add navigation call based on your navigation setup.
+                  */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
