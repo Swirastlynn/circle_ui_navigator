@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../circle_ui_navigator.dart';
 
+const int animationDuration = 800;
+
 /// [center] - central point of the widget and background ripple animation.
 /// It's up to you to be sure that the widget is on the screen.
 /// [animatedRippleColor] - color of the background ripple animation
@@ -12,7 +14,7 @@ import '../circle_ui_navigator.dart';
 /// [onOpenAnimationComplete] - lambda to call for open animation
 /// [isClosingAnimation] - is the closing animation happenning at the moment
 /// [onCloseAnimationComplete] - lambda to call for close animation
-/// [animationDuration] - circle navigator animation in milliseconds
+/// [circleAnimationDuration] - circle navigator animation in milliseconds
 /// [backgroundAnimationDuration] - background ripple animation in milliseconds
 /// [iconSize] - default size of the icon
 /// [actionIcons] contains predefined icons data.
@@ -27,8 +29,8 @@ class Config {
     required this.onOpenAnimationComplete,
     required this.isClosingAnimation,
     required this.onCloseAnimationComplete,
-    this.animationDuration = 800,
-    this.backgroundAnimationDuration = 800,
+    this.circleAnimationDuration = animationDuration,
+    this.backgroundAnimationDuration = animationDuration,
     required this.iconSize,
     required this.actionIcons,
     required this.closeIcon,
@@ -41,7 +43,7 @@ class Config {
   final void Function() onOpenAnimationComplete;
   final bool isClosingAnimation;
   final void Function() onCloseAnimationComplete;
-  final int animationDuration;
+  final int circleAnimationDuration;
   final int backgroundAnimationDuration;
   final double iconSize;
   final List<TappableIconData> actionIcons;

@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // todo shrink the scope of the state
   bool _isOpeningAnimation = true;
   bool _isClosingAnimation = false;
 
