@@ -9,8 +9,8 @@ import 'package:flutter_test/flutter_test.dart';
 bool _isOpeningAnimation = true;
 bool _isClosingAnimation = false;
 
-Config fakeConfig(int actionIconsCount, Size size) => Config(
-      center: Point(size.width / 2, size.height / 2),
+Config fakeConfig(int actionsCount, Point<double> center) => Config(
+      center: center,
       animatedRippleColor: const Color(0xFF66A0FE).withOpacity(0.7),
       filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
       isOpeningAnimation: _isOpeningAnimation,
@@ -22,7 +22,7 @@ Config fakeConfig(int actionIconsCount, Size size) => Config(
         _isClosingAnimation = false;
       },
       iconSize: 48.0,
-      actionIcons: fakeActionIcons(actionIconsCount),
+      actionIcons: fakeActionIcons(actionsCount),
       closeIcon: fakeCloseIcon,
     );
 

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -16,14 +18,14 @@ extension WidgetTesterUtils on WidgetTester {
   }
 
   Future<void> loadCircleNavigatorWidget({
-    required int actionIcons,
-    required Size size,
+    required int actionsCount,
+    required Point<double> center,
   }) async {
     await loadWidget(
       widget: DefaultAssetBundle(
         bundle: FakeAssetBundle(),
         child: CircleNavigatorConfig(
-          config: fakeConfig(actionIcons, size),
+          config: fakeConfig(actionsCount, center),
           child: const CircleNavigator(),
         ),
       ),
