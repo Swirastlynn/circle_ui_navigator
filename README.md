@@ -2,7 +2,7 @@ A Flutter plugin for showing a circular navigation widget in a gorgeous, animate
 
 An inspiration is a [design](https://www.behance.net/gallery/53917017/100-Mobile-UI-Interactions/modules/322510865) by Johny Vino.
 
-## How does it look?
+## What does it look like?
 
 
 | Open                                                                                                              | Close                                                                                                             |
@@ -28,7 +28,7 @@ import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 Then, use `CircleNavigatorConfig` in place of a widget. 
 You can customize all of the parameters shown below, and a few more.
 ```dart
-// This code should be inside State of StatefulWidget:
+// This code has to be inside a State of a StatefulWidget:
 bool _isOpeningAnimation = true;
 bool _isClosingAnimation = false;
 
@@ -42,16 +42,20 @@ Widget build(BuildContext context) {
         isOpeningAnimation: _isOpeningAnimation,
         onOpenAnimationComplete: () {
             /**
-            * You can add an optional reaction here if you like.
-            */
-            _isOpeningAnimation = false; // leave this line
+              * You can add an optional reaction here if you like.
+              */
+            setState(() {
+                _isOpeningAnimation = false;
+            });
         },
         isClosingAnimation: _isClosingAnimation,
         onCloseAnimationComplete: () {
             /**
-            * Add navigation call based on your navigation setup.
-            */
-            _isClosingAnimation = false; // leave this line
+              * Add navigation call based on your navigation setup.
+              */
+            setState(() {
+                _isClosingAnimation = false;
+            });
         },
         iconSize: 48.0,
         actionIcons: [
@@ -61,8 +65,8 @@ Widget build(BuildContext context) {
                 tappedColor: Colors.grey,
                 onTap: () {
                     /**
-                    * Add navigation call based on your navigation setup.
-                    */
+                      * Add navigation call based on your navigation setup.
+                      */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -74,8 +78,8 @@ Widget build(BuildContext context) {
                 tappedColor: Colors.grey,
                 onTap: () {
                     /**
-                    * Add navigation call based on your navigation setup.
-                    */
+                      * Add navigation call based on your navigation setup.
+                      */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -87,8 +91,8 @@ Widget build(BuildContext context) {
                 tappedColor: Colors.grey,
                 onTap: () {
                     /**
-                    * Add navigation call based on your navigation setup.
-                    */
+                      * Add navigation call based on your navigation setup.
+                      */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -100,8 +104,8 @@ Widget build(BuildContext context) {
                 tappedColor: Colors.grey,
                 onTap: () {
                     /**
-                    * Add navigation call based on your navigation setup.
-                    */
+                      * Add navigation call based on your navigation setup.
+                      */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
@@ -113,8 +117,8 @@ Widget build(BuildContext context) {
                 tappedColor: Colors.grey,
                 onTap: () {
                     /**
-                    * Add navigation call based on your navigation setup.
-                    */
+                      * Add navigation call based on your navigation setup.
+                      */
                 },
                 outerBorderColor: Colors.white,
                 outerBorderSize: 10,
