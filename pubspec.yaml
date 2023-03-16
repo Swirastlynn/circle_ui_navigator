@@ -19,7 +19,6 @@ dev_dependencies:
   # testing
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
 
   # code analysis
   flutter_lints: ^2.0.1
