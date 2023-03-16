@@ -34,8 +34,7 @@ bool _isClosingAnimation = false;
 
 @override
 Widget build(BuildContext context) {
-    ...
-    child: CircleNavigatorConfig(
+    return CircleNavigatorConfig(
         center: Point(200, 300), // of your choice and your responsibility to not draw a widget outside of the screen.
         animatedRippleColor: const Color(0xFF66A0FE).withOpacity(0.7),
         filledCircleColor: const Color(0xFFB4D8FF).withOpacity(0.7),
