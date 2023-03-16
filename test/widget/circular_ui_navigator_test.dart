@@ -16,10 +16,9 @@ const iPhone13Size = Size(375, 667);
 const samsungS20LandscapeSize = Size(800, 360);
 
 void main() {
-  testWidgets('''
-  GIVEN landscape and widget centered on a screen
+  testWidgets("""GIVEN landscape and widget centered on a screen 
   WHEN 5 actions 
-  THEN 6 icons found''', (tester) async {
+  THEN 6 icons found""", (tester) async {
     await tester.binding.setSurfaceSize(samsungS20LandscapeSize);
     await tester.loadCircleNavigatorWidget(
       actionsCount: 5,
@@ -33,10 +32,7 @@ void main() {
 
   // TODO The test works only when called alone, which is flaky.
   // TODO It reminds https://stackoverflow.com/questions/68997984/why-do-some-flutter-widget-tests-fail-if-executed-together-but-pass-individually
-  // testWidgets('''
-  // GIVEN portrait and widget centered on a screen
-  // WHEN 9 actions
-  // THEN 10 icons found''', (tester) async {
+  // testWidgets('''GIVEN portrait and widget centered on a screen WHEN 9 actions THEN 10 icons found''', (tester) async {
   //   await tester.binding.setSurfaceSize(iPhone13Size);
   //   await tester.loadCircleNavigatorWidget(
   //     actionsCount: 9,
