@@ -33,6 +33,7 @@ class IconsCircle extends StatelessWidget {
   }
 }
 
+/// The static part of the circle.
 // ignore: prefer-single-widget-per-file
 class IconsPositionedOnCircle extends StatelessWidget {
   const IconsPositionedOnCircle({

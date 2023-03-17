@@ -1,3 +1,6 @@
+## 1.0.3
+* improve documentation
+* 
 ## 1.0.2
 * standardize formatting
 * improve documentation

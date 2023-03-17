@@ -26,6 +26,7 @@ class CircleNavigatorConfig extends InheritedWidget {
 
   final Config config;
 
+  /// Calls [State.didChangeDependencies] in the widgets down the tree.
   @override
   bool updateShouldNotify(CircleNavigatorConfig oldWidget) {
     return config.isOpeningAnimation != oldWidget.config.isOpeningAnimation ||

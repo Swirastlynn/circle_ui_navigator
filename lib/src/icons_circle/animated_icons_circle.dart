@@ -31,6 +31,7 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle>
     super.dispose();
   }
 
+  /// Reaction to InheritedWidget ancestor change.
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
