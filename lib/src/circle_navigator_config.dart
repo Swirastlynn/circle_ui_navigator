@@ -13,7 +13,8 @@ class CircleNavigatorConfig extends InheritedWidget {
   static CircleNavigatorConfig of(BuildContext context) {
     // ignore: avoid-returning-widgets
     final CircleNavigatorConfig? result = maybeOf(context);
-    assert(result != null, 'No ClosingAnimationInheriterdParams found in the context');
+    assert(result != null,
+        'No ClosingAnimationInheriterdParams found in the context');
     return result!;
   }
 
@@ -29,7 +30,9 @@ class CircleNavigatorConfig extends InheritedWidget {
   bool updateShouldNotify(CircleNavigatorConfig oldWidget) {
     return config.isOpeningAnimation != oldWidget.config.isOpeningAnimation ||
         config.isClosingAnimation != oldWidget.config.isClosingAnimation ||
-        config.onOpenAnimationComplete != oldWidget.config.onOpenAnimationComplete ||
-        config.onCloseAnimationComplete != oldWidget.config.onCloseAnimationComplete;
+        config.onOpenAnimationComplete !=
+            oldWidget.config.onOpenAnimationComplete ||
+        config.onCloseAnimationComplete !=
+            oldWidget.config.onCloseAnimationComplete;
   }
 }

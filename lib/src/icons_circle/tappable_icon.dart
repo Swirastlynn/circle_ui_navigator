@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../tappable_icon_data.dart';
 
+/// Visual representation of [TappableIconData]
 class TappableIcon extends StatefulWidget {
   final TappableIconData tappableIconData;
 
@@ -48,7 +49,9 @@ class TappableIconState extends State<TappableIcon> {
           child: SvgPicture.asset(
             widget.tappableIconData.assetPath,
             colorFilter: ColorFilter.mode(
-              _isTapped ? widget.tappableIconData.tappedColor : widget.tappableIconData.color,
+              _isTapped
+                  ? widget.tappableIconData.tappedColor
+                  : widget.tappableIconData.color,
               BlendMode.srcIn,
             ),
           ),

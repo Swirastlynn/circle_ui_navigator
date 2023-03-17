@@ -25,7 +25,11 @@ void main() {
       '''GIVEN 3 icons for standard 48 icons size WHEN calculating appropriate circle radius THEN circle radius size bigger than 2 icons size in a row''',
       () {
     var iconSize = 48.0;
-    var diameter = 2 * calculateIconsCircleRadius(iconsCount: 3, iconSize: iconSize);
+    var diameter = 2 *
+        calculateIconsCircleRadius(
+          iconsCount: 3,
+          iconSize: iconSize,
+        );
     // print(diameter);
     expect(
       diameter,

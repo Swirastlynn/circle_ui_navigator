@@ -1,3 +1,7 @@
+## 1.0.2
+* standardize formatting
+* improve documentation
+
 ## 1.0.1
 * update README.MD
 * add screenshots to pub.dev

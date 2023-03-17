@@ -2,7 +2,7 @@
 check: format analyze metrics
 format:
 	@echo "\033[32m Formatting code... \033[0m"
-	@fvm dart format lib test example -l 100
+	@fvm dart format lib test example
 analyze:
 	@echo "\033[32m Flutter static analysis and linter... \033[0m"
 	@fvm flutter analyze

@@ -26,7 +26,8 @@ Config fakeConfig(int actionsCount, Point<double> center) => Config(
       closeIcon: fakeCloseIcon,
     );
 
-List<TappableIconData> fakeActionIcons(int actionIconsCount) => List<TappableIconData>.of(
+List<TappableIconData> fakeActionIcons(int actionIconsCount) =>
+    List<TappableIconData>.of(
       List.filled(
           actionIconsCount,
           TappableIconData(
