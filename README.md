@@ -1,4 +1,6 @@
-A Flutter plugin for showing a circular navigation widget in a gorgeous, animated way. Highly customizable.
+A Flutter package for showing a circular navigation widget in a gorgeous, animated way. Highly customizable.
+
+[![pub package](https://img.shields.io/pub/v/circle_ui_navigator.svg)](https://pub.dev/packages/circle_ui_navigator)
 
 An inspiration is a [design](https://www.behance.net/gallery/53917017/100-Mobile-UI-Interactions/modules/322510865) by Johny Vino.
 
