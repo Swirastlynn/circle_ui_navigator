@@ -1,9 +1,14 @@
 name: circle_ui_navigator
 description: >-
   A user-friendly customized widget whose goal is to display icons on a circle in a beatiful way.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/Swirastlynn/circle_ui_navigator
 repository: https://github.com/Swirastlynn/circle_ui_navigator
+screenshots:
+  - description: "The example widget open."
+    path: screenshots/the_widget_open.webp
+  - description: "The example widget close."
+    path: screenshots/the_widget_close.webp
 
 environment:
   sdk: ">=2.19.0 <3.0.0"

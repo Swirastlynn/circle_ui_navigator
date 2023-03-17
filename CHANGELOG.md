@@ -1,3 +1,7 @@
+## 1.0.1
+* update README.MD
+* add screenshots to pub.dev
+
 ## 1.0.0
 Initial version of the library.
 
