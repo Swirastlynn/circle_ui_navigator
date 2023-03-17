@@ -9,7 +9,11 @@ void main() {
       '''GIVEN 10 icons for standard 48 icons size WHEN calculating appropriate circle radius THEN circle radius size smaller than usual smallest screen width minus icon size''',
       () {
     var iconSize = 48.0;
-    var diameter = 2 * calculateIconsCircleRadius(iconsCount: 10, iconSize: iconSize);
+    var diameter = 2 *
+        calculateIconsCircleRadius(
+          iconsCount: 10,
+          iconSize: iconSize,
+        );
     // print(diameter);
     expect(
       diameter,

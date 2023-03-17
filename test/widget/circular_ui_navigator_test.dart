@@ -9,10 +9,10 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'test_utils.dart';
 
-const samsungS20Size = Size(360, 800);
-const iPhone13MiniSize = Size(375, 812);
-const iPhone11ProMaxSize = Size(414, 896);
-const iPhone13Size = Size(375, 667);
+// const samsungS20Size = Size(360, 800);
+// const iPhone13MiniSize = Size(375, 812);
+// const iPhone11ProMaxSize = Size(414, 896);
+// const iPhone13Size = Size(375, 667);
 const samsungS20LandscapeSize = Size(800, 360);
 
 void main() {
@@ -22,7 +22,10 @@ void main() {
     await tester.binding.setSurfaceSize(samsungS20LandscapeSize);
     await tester.loadCircleNavigatorWidget(
       actionsCount: 5,
-      center: Point(samsungS20LandscapeSize.width / 2, samsungS20LandscapeSize.height / 2),
+      center: Point(
+        samsungS20LandscapeSize.width / 2,
+        samsungS20LandscapeSize.height / 2,
+      ),
     );
     await tester.pumpAndSettle(Duration(milliseconds: animationDuration));
 

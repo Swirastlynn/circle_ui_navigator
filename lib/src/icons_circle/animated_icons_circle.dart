@@ -15,8 +15,7 @@ class AnimatedIconsCircle extends StatefulWidget {
   State<AnimatedIconsCircle> createState() => _AnimatedIconsCircleState();
 }
 
-class _AnimatedIconsCircleState extends State<AnimatedIconsCircle>
-    with TickerProviderStateMixin {
+class _AnimatedIconsCircleState extends State<AnimatedIconsCircle> with TickerProviderStateMixin {
   double scale = 1.0;
 
   late final _animationDuration = context.config.backgroundAnimationDuration;
@@ -35,13 +34,9 @@ class _AnimatedIconsCircleState extends State<AnimatedIconsCircle>
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (context.config.isOpeningAnimation) {
-      _controller
-          .forward()
-          .whenComplete(() => context.config.onOpenAnimationComplete());
+      _controller.forward().whenComplete(() => context.config.onOpenAnimationComplete());
     } else if (context.config.isClosingAnimation) {
-      _controller
-          .reverse()
-          .whenComplete(() => context.config.onCloseAnimationComplete());
+      _controller.reverse().whenComplete(() => context.config.onCloseAnimationComplete());
     }
   }
 

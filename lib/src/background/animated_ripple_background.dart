@@ -11,8 +11,7 @@ class AnimatedRippleBackground extends StatefulWidget {
   });
 
   @override
-  AnimatedRippleBackgroundState createState() =>
-      AnimatedRippleBackgroundState();
+  AnimatedRippleBackgroundState createState() => AnimatedRippleBackgroundState();
 }
 
 class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground>
@@ -33,13 +32,9 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground>
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (context.config.isOpeningAnimation) {
-      _controller
-          .forward()
-          .whenComplete(() => context.config.onOpenAnimationComplete());
+      _controller.forward().whenComplete(() => context.config.onOpenAnimationComplete());
     } else if (context.config.isClosingAnimation) {
-      _controller
-          .reverse()
-          .whenComplete(() => context.config.onCloseAnimationComplete());
+      _controller.reverse().whenComplete(() => context.config.onCloseAnimationComplete());
     }
   }
 
@@ -55,8 +50,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground>
           ),
           color: context.config.animatedRippleColor,
           center: context.config.center,
-          radius:
-              context.distanceToTheFurthestScreenCorner(context.config.center),
+          radius: context.distanceToTheFurthestScreenCorner(context.config.center),
         ),
       ),
     );
