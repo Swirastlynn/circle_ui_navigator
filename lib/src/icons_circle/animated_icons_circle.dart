@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../utils/extensions.dart';
 
-/// An animation enhancing [IconsCircle] to look more interesting with some circle scaling and icons rotation.
+/// An animation enhancing [IconsPositionedOnCircle] to look more interesting
+/// with some circle scaling and icons rotation.
 class AnimatedIconsCircle extends StatefulWidget {
   const AnimatedIconsCircle({
     required this.child,

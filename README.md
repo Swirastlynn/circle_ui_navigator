@@ -13,8 +13,7 @@ An inspiration is a [design](https://www.behance.net/gallery/53917017/100-Mobile
 
 ## Installation
 
-* Add `circular_ui_navigator: 1.0.0` to your `pubspec.yaml`.
-* Run `flutter pub get`
+* Run `flutter pub add circle_ui_navigator`
 
 This package requires Dart SDK version 2.19.0 or above to function properly.
 
