@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../utils/extensions.dart';
 
-/// An animation making the background of [CircleNavigator] more interesting with a fullscreen ripple effect.
+/// An animation making the background of [CircleNavigator]
+/// more interesting with a fullscreen ripple effect.
 class AnimatedRippleBackground extends StatefulWidget {
   const AnimatedRippleBackground({
     super.key,
@@ -29,6 +30,7 @@ class AnimatedRippleBackgroundState extends State<AnimatedRippleBackground>
     super.dispose();
   }
 
+  /// Handling a reaction to the config state changes up the tree.
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();

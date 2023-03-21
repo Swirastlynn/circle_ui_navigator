@@ -1,17 +1,9 @@
-## 1.0.4
-* update README.MD
-* IconsPositionedOnCircle class refactoring
-
-## 1.0.3
-* improve documentation
-  
-## 1.0.2
-* standardize formatting
-* improve documentation
-
-## 1.0.1
+## 1.0.1 - 1.0.5
 * update README.MD
 * add screenshots to pub.dev
+* standardize formatting
+* improve documentation
+* refactoring
 
 ## 1.0.0
 Initial version of the library.

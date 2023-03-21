@@ -6,7 +6,7 @@ import 'utils/calculus.dart';
 import 'utils/extensions.dart';
 
 /// The widget. Set up as a child of [CircleNavigatorConfig].
-/// It's children are [AnimatedRippleBackground] and positioned [IconsCircle]
+/// It's children are: [AnimatedRippleBackground] and [Positioned] [IconsCircle]
 class CircleNavigator extends StatelessWidget {
   const CircleNavigator({super.key});
 
