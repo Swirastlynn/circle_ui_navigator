@@ -17,7 +17,7 @@ class AnimatedIconsCircle extends StatefulWidget {
 }
 
 class _AnimatedIconsCircleState extends State<AnimatedIconsCircle>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   double scale = 1.0;
 
   late final _animationDuration = context.config.backgroundAnimationDuration;
