@@ -1,7 +1,7 @@
 name: circle_ui_navigator
 description: >-
   A user-friendly customized widget whose goal is to display icons on a circle in a beatiful way.
-version: 1.0.5
+version: 2.0.0
 homepage: https://github.com/Swirastlynn/circle_ui_navigator
 repository: https://github.com/Swirastlynn/circle_ui_navigator
 screenshots:
@@ -11,8 +11,7 @@ screenshots:
     path: screenshots/the_widget_close.webp
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: "^3.0.0"
 
 dependencies:
   equatable: ^2.0.5
@@ -27,5 +26,4 @@ dev_dependencies:
     sdk: flutter
 
   # code analysis
-  flutter_lints: ^2.0.1
-  dart_code_metrics: ^5.5.1
+  flutter_lints: ^4.0.0

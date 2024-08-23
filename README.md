@@ -15,7 +15,7 @@ An inspiration is a [design](https://www.behance.net/gallery/53917017/100-Mobile
 
 * Run `flutter pub add circle_ui_navigator`
 
-This package requires Dart SDK version 2.19.0 or above to function properly.
+Your project requires Dart SDK version `>= 3.0.0` but `< 4.0.0` to compile with this package.
 
 Please note that only SVG assets are supported for icons, as they are a highly compatible cross-platform solution. While this should be sufficient for most projects, please be aware that other icon types are not currently supported.
 
