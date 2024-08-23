@@ -1,9 +1,8 @@
 import 'dart:math';
-import 'dart:ui';
 
+import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:circle_ui_navigator/circle_ui_navigator.dart';
 
 /// An example of how to show the widget in the middle of the screen.
 void main() {
@@ -21,14 +20,14 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Circle UI Navigator example'),
         ),
-        body: HomePage(),
+        body: const HomePage(),
       ),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -42,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double pageWidth = context.screenWidth;
     double pageHeight = context.availableScreenHeight(
-      statusBarHeight: MediaQueryData.fromWindow(window).padding.top,
+      statusBarHeight: MediaQueryData.fromView(View.of(context)).padding.top,
       appBarHeight: 0,
       bottomNavigationBarHeight: kBottomNavigationBarHeight,
     );
@@ -143,7 +142,7 @@ class _HomePageState extends State<HomePage> {
           innerBorderColor: Colors.white,
         ),
       ),
-      child: CircleNavigator(),
+      child: const CircleNavigator(),
     );
   }
 }

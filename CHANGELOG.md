@@ -1,9 +1,12 @@
+## 2.0.0
+* Bump required Dart SDK to minimum 3.0.0.
+
 ## 1.0.1 - 1.0.5
-* update README.MD
-* add screenshots to pub.dev
-* standardize formatting
-* improve documentation
-* refactoring
+* Update README.MD.
+* Add screenshots to pub.dev.
+* Standardize formatting.
+* Improve documentation.
+* Refactoring.
 
 ## 1.0.0
 Initial version of the library.

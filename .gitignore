@@ -44,11 +44,8 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# fvm
-.fvm/flutter_sdk
-
-# mason
-.mason/**
-
 # test coverage
 coverage/**
+
+# FVM Version Cache
+.fvm/
